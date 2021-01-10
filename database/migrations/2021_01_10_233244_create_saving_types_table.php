@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateUsersTable extends Migration
+class CreateSavingTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('saving_types', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('telephone');
-            $table->string('password');
-            $table->string('confirm_password');
-            $table->rememberToken();
+            $table->string("challenge_type");
+            $table->string("number_of_weeks")->default(1);
+            $table->string("total_amount");
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
@@ -35,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('saving_types');
     }
 }

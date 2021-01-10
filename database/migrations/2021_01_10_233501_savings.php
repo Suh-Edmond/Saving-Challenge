@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateUsersTable extends Migration
+class Savings extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('savings', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('telephone');
-            $table->string('password');
-            $table->string('confirm_password');
-            $table->rememberToken();
+            $table->string("week_number");
+            $table->string("amount_deposited");
+            $table->string("status")->default(0);
+            $table->string("balance");
+            $table->unsignedBigInteger("saving_type_id");
+            $table->foreign('saving_type_id')
+                ->references('id')
+                ->on('saving_types')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
@@ -35,6 +38,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('savings');
     }
 }
