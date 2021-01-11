@@ -24,7 +24,7 @@ class HasSavingTypeSeeder extends Seeder
     public function run(Faker $faker)
     {
         for ($i = 0; $i < 30; $i++) {
-            DB::table("has_savings")->insert([
+            DB::table("has_saving_types")->insert([
                 "user_id" => random_int(1, $this->user_id),
                 "saving_type_id" => random_int(1, $this->saving_type)
             ]);

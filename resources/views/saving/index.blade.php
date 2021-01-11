@@ -33,11 +33,9 @@
                                     <a class="btn btn-outline-info" href="/saving/get/challenges/{{$saving->id}}/" role="button">View</a>
                                 </td>
                                 <td>
-                                    <form method="POST" action="/saving/get/challenges/{{$saving->id}}/">
-                                        @method('DELETE')
-                                        <button class="btn btn-outline-danger">Delete</button>
-                                        @csrf
-                                    </form>
+                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                             @endforeach
@@ -48,6 +46,27 @@
         </div>
 
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal">
+        <div class="modal-dialog  modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @for($i =0; $i < 1; $i++) <p class="h6">Delete Saving Challenge? {{$savings[$i]->challenge_type}}</p>@endfor
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light  text-success" data-dismiss="modal">
+                        Close</button>
+                    @for($i =0; $i < 1; $i++) <form method="POST" action="/saving/get/challenges/{{$savings[$i]->id}}/">
+                        @method('DELETE')
+                        <button class="btn btn-light text-success">Delete</button>
+                        @csrf
+                        </form>
+                        @endfor
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 @endsection

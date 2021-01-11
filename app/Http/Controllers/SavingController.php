@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\HasSavingType;
 use Illuminate\Support\Facades\DB;
 use App\Models\Saving;
@@ -13,7 +13,7 @@ class SavingController extends Controller
     //view all selected savings
     public function index()
     {
-        $user_id = 1; // fake user id
+        $user_id = Auth::user()->id; // fake user id
         $savings = DB::table('has_savings')
             ->join('users', 'users.id', '=', 'has_savings.user_id')
             ->join('saving_types', 'saving_types.id', '=', 'has_savings.saving_type_id')
@@ -51,7 +51,7 @@ class SavingController extends Controller
             ->join('saving_types', 'saving_types.id', '=', 'has_savings.saving_type_id')
             ->join('savings', 'saving_types.id', '=', 'savings.saving_type_id')
             ->join('users', 'users.id', '=', 'has_savings.user_id')
-            ->where('users.id', '=', 2)
+            ->where('users.id', '=', Auth::user()->id)
             ->where('saving_types.id', '=', $id)
             ->select('savings.balance')->orderBy('savings.id', 'DESC')->get()->first();
         $created = Saving::insert([

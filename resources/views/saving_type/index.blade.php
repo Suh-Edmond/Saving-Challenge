@@ -4,11 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         @if (Session::has('message'))
-        <div class="alert alert-success alert-dismissible fade show" role=" alert">
-            {{ Session::get('message') }}<a href="/saving/get/challenges/" class="alert-link">View Challenges</a>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert alert-success alert-dismissible fade show">
+            <strong>{{ Session::get('message') }}</strong>
+            <a href="/saving/get/challenges/" class="alert-link">View Challenges</a>
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
         </div>
-
         @endif
     </div>
     <div class="row justify-content-center">
@@ -55,26 +57,6 @@
         </div>
 
     </div>
-    <!-- Modal data-toggle="modal" data-target="#exampleModal"
-    <div class="modal fade" id="exampleModal">
-        <div class="modal-dialog  modal-xs">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            x</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="h6">The Selected Saving Challenge has been added Successfully!</p>
-                </div>
-                <div class="modal-footer">
-                    <a role="button" class="btn btn-secondary" href="/saving/get/challenges/">
-                        View Challenges</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
 </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view("/", "home");
 //view all available saving types
 Route::get("saving/challenges/", [App\Http\Controllers\SavingTypeController::class, 'index']);
 ///add a new saving challenge
@@ -34,3 +33,12 @@ Route::get("saving/get/challenges/{id}/add", [App\Http\Controllers\SavingControl
 Route::post("saving/get/challenges/{id}", [App\Http\Controllers\SavingController::class, 'store']);
 //view all savings for a particular saving type
 Route::get("saving/get/challenges/{id}/", [App\Http\Controllers\SavingController::class, 'show']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

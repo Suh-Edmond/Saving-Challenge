@@ -14,7 +14,7 @@ class CreateHasSavingTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('has_savings', function (Blueprint $table) {
+        Schema::create('has_saving_types', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger("saving_type_id");
