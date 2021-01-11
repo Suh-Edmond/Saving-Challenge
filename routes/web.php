@@ -16,13 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get("saving_types", [App\Http\Controllers\SavingTypeController::class, 'index']); //view all available saving types
-
-Route::get("saving_types/create", [App\Http\Controllers\SavingTypeController::class, 'create']); ///form to add a new challenge
-Route::post("saving_types", [App\Http\Controllers\SavingTypeController::class, 'store']); ///add a new saving type
-Route::get("saving_types/{saving_type}", [App\Http\Controllers\HasSavingsController::class, 'store']); //add a saving type to my selected saving types
-Route::get("savings", [App\Http\Controllers\SavingsController::class, 'index']); //view all selected saving types
-Route::get("savings/{id}/add", [App\Http\Controllers\SavingsController::class, 'create']); //add saving
-Route::post("savings/{id}/", [App\Http\Controllers\SavingsController::class, 'store']); //store savings
-Route::get("savings/{id}/", [App\Http\Controllers\SavingsController::class, 'show']); //view all savings for a particular saving type
-Route::delete("savings/{id}/", [App\Http\Controllers\SavingsController::class, 'destroy']);
+//view all available saving types
+Route::get("saving/challenges/", [App\Http\Controllers\SavingTypeController::class, 'index']);
+///add a new saving challenge
+Route::get("saving/challenges/create", [App\Http\Controllers\SavingTypeController::class, 'create']);
+//store a new saving challenge
+Route::post("saving/challenges", [App\Http\Controllers\SavingTypeController::class, 'store']);
+//add a saving type to my selected saving types
+Route::post("saving/challenges/{id}", [App\Http\Controllers\HasSavingTypeController::class, 'store']);
+//delete a saving type
+Route::delete("saving/get/challenges/{id}/", [App\Http\Controllers\HasSavingTypeController::class, 'destroy']);
+//view all selected saving types
+Route::get("saving/get/challenges/", [App\Http\Controllers\SavingController::class, 'index']);
+//add savings to a saving type
+Route::get("saving/get/challenges/{id}/add", [App\Http\Controllers\SavingController::class, 'create']);
+//store savings to a saving type
+Route::post("saving/get/challenges/{id}", [App\Http\Controllers\SavingController::class, 'store']);
+//view all savings for a particular saving type
+Route::get("saving/get/challenges/{id}/", [App\Http\Controllers\SavingController::class, 'show']);
