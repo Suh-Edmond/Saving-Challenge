@@ -7,6 +7,7 @@ use App\Models\HasSavingType;
 use Illuminate\Support\Facades\DB;
 use App\Models\Saving;
 use Illuminate\Http\Request;
+use Savings;
 
 class SavingController extends Controller
 {
@@ -14,20 +15,26 @@ class SavingController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id; // fake user id
-        $savings = DB::table('has_saving_types')
+        $saving_challenges = DB::table('has_saving_types')
             ->join('users', 'users.id', '=', 'has_saving_types.user_id')
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
             ->where('users.id', '=', $user_id)
             ->select('saving_types.id', 'saving_types.challenge_type', 'saving_types.number_of_weeks', 'saving_types.total_amount')
             ->get();
-        return view('saving.index', compact('savings'));
-        //dd($savings);
+        return view('saving.index', compact('saving_challenges'));
+        //dd(count($saving_challenges));
     }
 
     //add savings
     public function create($id)
     {
-        return view("saving.create", compact('id'));
+        $number_of_weeks = DB::table('savings')
+            ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
+            ->where('saving_types.id', '=', $id)
+            ->select('saving_types.id', 'savings.week_number')
+            ->get();
+        return view("saving.create", compact('id', 'number_of_weeks'));
+        //dd($number_of_weeks);
     }
     //view all savings of a particular type
     public function show($id)
@@ -37,8 +44,8 @@ class SavingController extends Controller
             ->where('saving_types.id', '=', $id)
             ->select('saving_types.id', 'savings.week_number', 'savings.amount_deposited', 'savings.status', 'savings.balance')
             ->get();
-        return view('saving.show', compact('savings'));
-        //dd($saving_type);
+
+        return view('saving.show', compact('savings', 'id'));
     }
     //add  a new saving to a particular saving type by a owner of the savin type
     public function store($id)
@@ -49,19 +56,29 @@ class SavingController extends Controller
         ]);
         $current_balance = DB::table('has_saving_types')
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
-            ->join('savings', 'saving_types.id', '=', 'savings.saving_type_id')
             ->join('users', 'users.id', '=', 'has_saving_types.user_id')
+            ->join('savings', 'saving_types.id', '=', 'savings.saving_type_id')
             ->where('users.id', '=', Auth::user()->id)
             ->where('saving_types.id', '=', $id)
             ->select('savings.balance')->orderBy('savings.id', 'DESC')->get()->first();
-        $created = Saving::insert([
-            'week_number' => $saving['week_number'],
-            'amount_deposited' => $saving['amount_deposited'],
-            'status' => 1,
-            'balance' => $saving['amount_deposited'] + $current_balance->balance,
-            'saving_type_id' => $id
-        ]);
+        if ($current_balance != null) {
+            $created = Saving::insert([
+                'week_number' => $saving['week_number'],
+                'amount_deposited' => $saving['amount_deposited'],
+                'status' => 1,
+                'balance' => $saving['amount_deposited'] + $current_balance->balance,
+                'saving_type_id' => $id
+            ]);
+        } else if ($current_balance == null) {
+            $created = Saving::insert([
+                'week_number' => $saving['week_number'],
+                'amount_deposited' => $saving['amount_deposited'],
+                'status' => 1,
+                'balance' => $saving['amount_deposited'] + 0,
+                'saving_type_id' => $id
+            ]);
+        }
         return redirect("saving/get/challenges/$id");
-        //dd($created);
+        ($current_balance);
     }
 }

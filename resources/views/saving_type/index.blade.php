@@ -4,12 +4,14 @@
 <div class="container">
     <div class="row justify-content-center pt-3">
         @if (Session::has('message'))
-        <div class="alert alert-success alert-dismissible fade show">
-            <strong>{{ Session::get('message') }}</strong>
-            <a href="/saving/get/challenges/" class="alert-link">View Challenges</a>
-            <button type="button" class="close" data-dismiss="alert">
-                <span>&times;</span>
-            </button>
+        <div class="col-12 col-md-12 col-lg-12 col-xs-12 colsm-12 text-center text-white">
+            <div class="alert alert-success alert-dismissible fade show">
+                <strong>{{ Session::get('message') }}</strong>
+                <a href="/saving/get/challenges/" class="alert-link "> View Challenges</a>
+                <button type="button" class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+            </div>
         </div>
         @endif
     </div>

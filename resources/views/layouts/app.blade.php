@@ -38,7 +38,7 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a class="nav-link">Home</a>
@@ -107,16 +107,23 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
+                            <a href="/saving/challenges/" class="nav-link">
+                                <i class="nav-icon fas fa-money-check"></i>
+                                <p>
+                                    Saving Challenges
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
                             <a href="/saving/get/challenges/" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
+                                <i class="nav-icon fas fa-money-check"></i>
                                 <p>
                                     My Saving Challenges
                                 </p>
                             </a>
-
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a class="nav-link">
                                 <i class="nav-icon far fa-user-circle"></i>
                                 <p>
                                     Account
@@ -125,7 +132,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
+                                    <a href="/user/profile/{{Auth::user()->id}}" class="nav-link">
                                         <i class="nav-icon fas fa-user"></i>
                                         <p>
                                             Profile
@@ -133,7 +140,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
+                                    <a href="/user/profile/{{Auth::user()->id}}/edit" class="nav-link">
                                         <i class="nav-icon fas fa-user-edit"></i>
                                         <p>
                                             Update Profile

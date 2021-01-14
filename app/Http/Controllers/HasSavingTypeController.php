@@ -17,10 +17,8 @@ class HasSavingTypeController extends Controller
             'user_id' => $user_id,
             'saving_type_id' => $id
         ]);
-        Session::flash('message', "Saving Challenge Selected!");
+        Session::flash('message', "Saving Challenge Selected!   ");
         return redirect()->back();
-        //return redirect()->back()->with('success', 'Saving Challenges has been added Successfully!');
-        //dd($created);
     }
 
     //delete savings for a saving type
