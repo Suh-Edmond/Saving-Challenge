@@ -10,11 +10,15 @@
                 </div>
                 <div class="card-body">
                     <form class="form form-floating" method="POST" action="/saving/get/challenges/{{$id}}/">
-                        <div class="form-group pb-3">
-                            <label for="week_number" class="pb-2">Week number:</label>
-                            <input type="number" class="form-control" name="week_number" required>
+                        <div class="form-group">
+                            <label for="weeknumber">Week Number:</label>
+                            <select class="form-control" id="week_number" required>
+                                <option selected>Select week number</option>
+                                @foreach($number_of_weeks as $number)
+                                <option value="{{$number->id}}">{{$number->week_number}}</option>
+                                @endforeach
+                            </select>
                         </div>
-
                         <div class="form-group pb-3">
                             <label for="deposite_amount" class="pb-2">Deposite Amount :</label>
                             <input type="number" class="form-control" name="amount_deposited" required>
