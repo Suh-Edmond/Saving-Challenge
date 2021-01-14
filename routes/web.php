@@ -37,7 +37,11 @@ Route::get("saving/get/challenges/{id}/", [App\Http\Controllers\SavingController
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-
+//route for email notification
 Route::get('/email_notifications', [App\Http\Controllers\MailController::class, 'SendMail'])->middleware('auth');
-
-Route::get('/user/profile/', [App\Http\Controllers\UserController::class, 'show'])->middleware('auth');
+//route to show a user
+Route::get('/user/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->middleware('auth');
+//route for edit form for user details
+Route::get('/user/profile/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->middleware('auth');
+//route to update user details
+Route::put('/user/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->middleware('auth');

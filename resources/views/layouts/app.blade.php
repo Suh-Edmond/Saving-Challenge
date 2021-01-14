@@ -132,7 +132,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/user/profile/" class="nav-link">
+                                    <a href="/user/profile/{{Auth::user()->id}}" class="nav-link">
                                         <i class="nav-icon fas fa-user"></i>
                                         <p>
                                             Profile
@@ -140,7 +140,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
+                                    <a href="/user/profile/{{Auth::user()->id}}/edit" class="nav-link">
                                         <i class="nav-icon fas fa-user-edit"></i>
                                         <p>
                                             Update Profile
