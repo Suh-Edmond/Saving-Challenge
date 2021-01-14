@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pt-3">
         @if (Session::has('message'))
         <div class="alert alert-success alert-dismissible fade show">
             <strong>{{ Session::get('message') }}</strong>
@@ -17,9 +17,9 @@
         <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex justify-content-between">
-                        <h3 class="card-title text-primary ">Saving Challenges</h3>
-                        <a class="btn btn-outline-primary" href="/saving/challenges/create" role="button">Create Challenge</a>
+                    <div class="d-flex justify-content-between pt-3">
+                        <p class="text-primary h3">Saving Challenges</p>
+                        <p><a class="btn btn-outline-primary" href="/saving/challenges/create" role="button">Create Challenge</a></p>
                     </div>
 
                 </div>

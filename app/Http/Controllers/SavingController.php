@@ -14,9 +14,9 @@ class SavingController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id; // fake user id
-        $savings = DB::table('has_savings')
-            ->join('users', 'users.id', '=', 'has_savings.user_id')
-            ->join('saving_types', 'saving_types.id', '=', 'has_savings.saving_type_id')
+        $savings = DB::table('has_saving_types')
+            ->join('users', 'users.id', '=', 'has_saving_types.user_id')
+            ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
             ->where('users.id', '=', $user_id)
             ->select('saving_types.id', 'saving_types.challenge_type', 'saving_types.number_of_weeks', 'saving_types.total_amount')
             ->get();
@@ -47,10 +47,10 @@ class SavingController extends Controller
             'week_number' => 'required|min:1',
             'amount_deposited' => 'required',
         ]);
-        $current_balance = DB::table('has_savings')
-            ->join('saving_types', 'saving_types.id', '=', 'has_savings.saving_type_id')
+        $current_balance = DB::table('has_saving_types')
+            ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
             ->join('savings', 'saving_types.id', '=', 'savings.saving_type_id')
-            ->join('users', 'users.id', '=', 'has_savings.user_id')
+            ->join('users', 'users.id', '=', 'has_saving_types.user_id')
             ->where('users.id', '=', Auth::user()->id)
             ->where('saving_types.id', '=', $id)
             ->select('savings.balance')->orderBy('savings.id', 'DESC')->get()->first();

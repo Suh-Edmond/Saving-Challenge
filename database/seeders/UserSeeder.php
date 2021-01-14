@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 "email" => $faker->email,
                 "telephone" => $faker->phoneNumber,
                 "password" => $faker->password(8),
-                "confirm_password" => $faker->password(8)
+
             ]);
         }
     }

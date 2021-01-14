@@ -6,9 +6,9 @@
         <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex justify-content-between">
-                        <h3 class="card-title text-primary ">My Savings </h3>
-                        @for($i =0; $i < 1; $i++) <a class="btn btn-outline-primary" href="/saving/get/challenges/{{$savings[$i]->id}}/add" role="button">Add Saving</a>
+                    <div class="d-flex justify-content-between pt-3">
+                        <p class=" text-primary h3">My Savings </p>
+                        @for($i =0; $i < 1; $i++) <p><a class="btn btn-outline-primary" href="/saving/get/challenges/{{$savings[$i]->id}}/add" role="button">Add Saving</a></p>
                             @endfor
                     </div>
 

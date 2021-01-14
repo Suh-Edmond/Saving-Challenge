@@ -27,10 +27,11 @@ class HasSavingTypeController extends Controller
     public function destroy($id)
     {
         $data = DB::table('has_saving_types')
-            ->join('users', 'users.id', '=', 'has_savings.user_id')
-            ->join('saving_types', 'saving_types.id', '=', 'has_savings.saving_type_id')
-            ->where('saving_types.id', '=', $id)->select('has_savings.*')->delete();
+            ->join('users', 'users.id', '=', 'has_saving_types.user_id')
+            ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
+            ->where('saving_types.id', '=', $id)->select('has_saving_types.*')->delete();
         // $deleted = $data->delete();
+        Session::flash('message', "Saving Challenge has been deleted successfully");
         return redirect("/saving/get/challenges/");
     }
 }
