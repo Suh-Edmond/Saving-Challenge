@@ -17,9 +17,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
+        'telephone',
         'password',
+        'confirm_password'
     ];
 
     /**
@@ -40,4 +43,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //define eloquent relations between user and savings
+    public function saving_types()
+    {
+        return $this->belongsToMany(SavingType::class);
+    }
 }

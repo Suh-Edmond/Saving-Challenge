@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\SavingType;
+
+class SavingTypeController extends Controller
+{
+    //view all saving types
+    public function index()
+    {
+        $saving_types = SavingType::all();
+        return view('saving_type.index', compact("saving_types"));
+    }
+
+
+    //create a saving type
+    public function create()
+    {
+        return view('saving_type.create');
+    }
+    //add a saving type
+    public function store()
+    {
+        $data = request()->validate([
+            'challenge_type' => 'required',
+            'number_of_weeks' => 'required|min:1',
+            'total_amount' => 'required'
+        ]);
+        SavingType::create($data);
+        return redirect('/saving/challenges');
+    }
+
+
+    //delete a selected saving type
+    public function delete()
+    {
+    }
+}
