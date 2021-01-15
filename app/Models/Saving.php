@@ -15,4 +15,9 @@ class Saving extends Model
     {
         return $this->belongsTo(SavingType::class);
     }
+    //define eloquent relationships between savings and users
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

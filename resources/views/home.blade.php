@@ -22,7 +22,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3></h3>
+                        <h3>{{$challenges}}</h3>
 
                         <p>Selected Challenges</p>
                     </div>
@@ -37,9 +37,9 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>{{$finish_challenges}}</h3>
 
-                        <p>Bounce Rate</p>
+                        <p>Completed Challenges</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -52,9 +52,9 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3> </h3>
 
-                        <p>User Registrations</p>
+                        <p>Non Complied Challenges</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
@@ -67,9 +67,9 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>x</h3>
+                        <h3>{{$zero_challenges}}</h3>
 
-                        <p>Zero Saving Challenges</p>
+                        <p>Zero Saved Challenges</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
@@ -132,6 +132,7 @@
                             </table>
                             <div class="row justify-content-center pt-3">
                                 <div>
+                                    {{$saving_types->links('pagination::bootstrap-4')}}
 
                                 </div>
                             </div>
