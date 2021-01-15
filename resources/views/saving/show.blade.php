@@ -44,6 +44,12 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="row justify-content-center pt-3">
+                        <div>
+                            {{$savings->links('pagination::bootstrap-4')}}
+
+                        </div>
+                    </div>
                     @endif
                     @if(count($savings) == 0)
                     <div class="row justify-content-center pt-3">

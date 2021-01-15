@@ -13,7 +13,7 @@
                 <form action="/user/profile/{{$user->id}}" method="POST">
                     @method('PUT')
                     <div class="row rounded-border pb-3">
-                        <div class=" col-12 col-sm-12 col-lg-12 col-xs-12 h5 text-weight-bolder">
+                        <div class=" col-12 col-sm-12 col-lg-12 col-xs-12 h6">
                             <span class="pl-2"><i class="fas fa-user pr-3"></i>
                                 First Name</span>
                         </div>
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="row rounded-border pb-3">
-                        <div class=" col-12 col-sm-12 col-lg-12 col-xs-12 h4 text-weight-bolder h5">
+                        <div class=" col-12 col-sm-12 col-lg-12 col-xs-12 h6">
 
                             <span class="pl-2"><i class="fas fa-user pr-3"></i> Last Name</span>
                         </div>
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="row rounded-border pb-3">
-                        <div class="col-sm-12 col-lg-12 col-xs-12 h5">
+                        <div class="col-sm-12 col-lg-12 col-xs-12 h6">
                             <span class="pl-2">
                                 <i class="fas fa-envelope pr-3"></i>
                                 Email
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="row rounded-border pb-3">
-                        <div class="col-sm-12 col-lg-12 col-xs-12 h5">
+                        <div class="col-sm-12 col-lg-12 col-xs-12 h6">
                             <span class="pl-2">
                                 <i class="fas fa-phone-alt pr-3"></i>
                                 Telephone

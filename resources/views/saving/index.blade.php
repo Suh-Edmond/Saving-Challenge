@@ -56,6 +56,12 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="row justify-content-center pt-3">
+                        <div>
+                            {{$saving_challenges->links('pagination::bootstrap-4')}}
+
+                        </div>
+                    </div>
                     @endif
                     @if(count($saving_challenges) == 0)
                     <div class="row justify-content-center pt-3">
@@ -69,6 +75,10 @@
                         </div>
                     </div>
                     @endif
+                    <!-- <div class="pt-2 fw-normal">
+                        <label>Total Number of Selected Saving Challenges: {{count($saving_challenges)}}</label>
+                    </div> -->
+
                 </div>
             </div>
         </div>

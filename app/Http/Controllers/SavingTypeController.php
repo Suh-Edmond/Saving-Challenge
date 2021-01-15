@@ -10,7 +10,7 @@ class SavingTypeController extends Controller
     //view all saving types
     public function index()
     {
-        $saving_types = SavingType::all();
+        $saving_types = SavingType::paginate(5);
         return view('saving_type.index', compact("saving_types"));
     }
 
