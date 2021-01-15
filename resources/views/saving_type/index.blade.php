@@ -54,6 +54,12 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="row justify-content-center pt-3">
+                        <div>
+                            {{$saving_types->links('pagination::bootstrap-4')}}
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\HasSavingType;
 use Illuminate\Support\Facades\DB;
 use App\Models\Saving;
+use App\Models\SavingType;
 use Illuminate\Http\Request;
 use Savings;
 
@@ -20,19 +21,15 @@ class SavingController extends Controller
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
             ->where('users.id', '=', $user_id)
             ->select('saving_types.id', 'saving_types.challenge_type', 'saving_types.number_of_weeks', 'saving_types.total_amount')
-            ->get();
+            ->paginate(5);
         return view('saving.index', compact('saving_challenges'));
-        //dd(count($saving_challenges));
+        //(($saving_challenges));
     }
 
-    //add savings
+    //add savings. need to pass the number of weeks for the challenge
     public function create($id)
     {
-        $number_of_weeks = DB::table('savings')
-            ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
-            ->where('saving_types.id', '=', $id)
-            ->select('saving_types.id', 'savings.week_number')
-            ->get();
+        $number_of_weeks = SavingType::findOrFail($id)->number_of_weeks;
         return view("saving.create", compact('id', 'number_of_weeks'));
         //dd($number_of_weeks);
     }
@@ -43,7 +40,7 @@ class SavingController extends Controller
             ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
             ->where('saving_types.id', '=', $id)
             ->select('saving_types.id', 'savings.week_number', 'savings.amount_deposited', 'savings.status', 'savings.balance')
-            ->get();
+            ->paginate(5);
 
         return view('saving.show', compact('savings', 'id'));
     }
@@ -51,7 +48,7 @@ class SavingController extends Controller
     public function store($id)
     {
         $saving = request()->validate([
-            'week_number' => 'required|min:1',
+            'week_number' => 'required',
             'amount_deposited' => 'required',
         ]);
         $current_balance = DB::table('has_saving_types')
@@ -78,7 +75,7 @@ class SavingController extends Controller
                 'saving_type_id' => $id
             ]);
         }
-        return redirect("saving/get/challenges/$id");
-        ($current_balance);
+        return redirect("saving/get/challenges/" . $id);
+        //dd($current_balance);
     }
 }
