@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pt-5">
         <div class="col-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header text-white">
                     <div class="text-center  title p-1">
                         <h4>{{ __('Login to your Account') }}</h4>
                     </div>
@@ -39,29 +39,11 @@
                             </span>
                             @enderror
                         </div>
-                        <!-- <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div> -->
-
                         <div class="form-group row mb-0 p-3 d-flex justify-content-center">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                <!-- @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                                @endif -->
                             </div>
                         </div>
                     </form>
@@ -70,4 +52,18 @@
         </div>
     </div>
 </div>
+<style scoped>
+    .title {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .card-header {
+        background-color: blue;
+    }
+
+    /*
+    .btn {
+        background-color: navy;
+    } */
+</style>
 @endsection

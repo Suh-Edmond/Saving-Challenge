@@ -38,10 +38,12 @@ class SavingController extends Controller
     {
         $savings = DB::table('savings')
             ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
+            ->join('users', 'users.id', '=', 'savings.user_id')
+            ->where('users.id', '=', Auth::user()->id)
             ->where('saving_types.id', '=', $id)
             ->select('saving_types.id', 'savings.week_number', 'savings.amount_deposited', 'savings.status', 'savings.balance')
             ->paginate(5);
-
+        //dd($savings);
         return view('saving.show', compact('savings', 'id'));
     }
     //add  a new saving to a particular saving type by a owner of the savin type
@@ -64,7 +66,8 @@ class SavingController extends Controller
                 'amount_deposited' => $saving['amount_deposited'],
                 'status' => 1,
                 'balance' => $saving['amount_deposited'] + $current_balance->balance,
-                'saving_type_id' => $id
+                'saving_type_id' => $id,
+                'user_id' => Auth::user()->id
             ]);
         } else if ($current_balance == null) {
             $created = Saving::insert([
@@ -72,7 +75,8 @@ class SavingController extends Controller
                 'amount_deposited' => $saving['amount_deposited'],
                 'status' => 1,
                 'balance' => $saving['amount_deposited'] + 0,
-                'saving_type_id' => $id
+                'saving_type_id' => $id,
+                'user_id' => Auth::user()->id
             ]);
         }
         return redirect("saving/get/challenges/" . $id);

@@ -37,11 +37,8 @@ Route::get("saving/get/challenges/{id}/", [App\Http\Controllers\SavingController
 Auth::routes();
 //home route
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-//route to the number of all select challenges in the home pag
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'getSelectedChallenge'])->name('home')->middleware('auth');
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'getNoBalance'])->name('home')->middleware('auth');
 //route for email notification
-Route::get('/email_notifications', [App\Http\Controllers\MailController::class, 'SendMail'])->middleware('auth');
+Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'sendNotification'])->middleware('auth');
 //route to show a user
 Route::get('/user/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->middleware('auth');
 //route for edit form for user details

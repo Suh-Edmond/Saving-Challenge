@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(SavingType::class);
     }
+    //eloquent relationship between users and savings
+    public function savings()
+    {
+        return $this->hasMany(Saving::class);
+    }
 }
