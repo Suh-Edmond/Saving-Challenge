@@ -38,7 +38,7 @@ Auth::routes();
 //home route
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 //route for email notification
-Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'SendNotification'])->middleware('auth');
+Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'sendNotification'])->middleware('auth');
 //route to show a user
 Route::get('/user/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->middleware('auth');
 //route for edit form for user details

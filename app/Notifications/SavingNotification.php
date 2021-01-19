@@ -41,12 +41,12 @@ class SavingNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = "/saving/get/challenges";
+        $url = "localhost:8000/login";
         return (new MailMessage)
             ->from('suhedmond25@yahoo.com', 'Saving Challenge')
-            ->greeting("Hello")
+            ->greeting($this->saving_notification['name'])
             ->line($this->saving_notification['body'])
-            ->action('Notification Action', $url)
+            ->action('Login to make Saving', $url)
             ->line('Thank you for using our application!');
     }
 
@@ -58,8 +58,6 @@ class SavingNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-            'id' => $this->saving_notification['id']
-        ];
+        return [];
     }
 }

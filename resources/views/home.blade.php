@@ -37,7 +37,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>{{$finish_challenges}}</h3>
+                        <h3></h3>
 
                         <p>Completed Challenges</p>
                     </div>
@@ -67,7 +67,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>{{$zero_challenges}}</h3>
+                        <h3></h3>
 
                         <p>Zero Saved Challenges</p>
                     </div>
@@ -104,7 +104,7 @@
 
                         <div class="card-body">
                             <table class="table  table-hover table-striped table-md ">
-                                <thead class="bg-primary text-white">
+                                <thead class="text-white bg-primary">
                                     <tr>
                                         <th scope="col">S/N</th>
                                         <th scope="col">Challenge Type</th>
@@ -145,5 +145,9 @@
         </div>
     </div>
 </section>
-
+<style scoped>
+    /* .head {
+        background-color: $primary;
+    } */
+</style>
 @endsection

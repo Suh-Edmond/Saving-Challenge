@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-6 col-md-6 col-xs-12 col-sm-12">
             <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <div class="text-center  title p-1">
+                <div class="card-header  text-white">
+                    <div class="text-center  title">
                         <h4>{{ __('Create Account') }}</h4>
                     </div>
                 </div>
@@ -74,8 +74,8 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
 
-                        <div class="form-group row mb-0 pt-2 d-flex justify-content-center">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group row mb-0 pt-2">
+                            <div class="d-flex  justify-content-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
@@ -92,5 +92,15 @@
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bolder;
     }
+
+
+    .card-header {
+        background-color: blue;
+    }
+
+    /*
+    .btn {
+        background-color: navy;
+    } */
 </style>
 @endsection

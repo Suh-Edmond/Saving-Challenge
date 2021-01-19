@@ -44,4 +44,9 @@
         </div>
     </div>
 </div>
+<style scoped>
+    /* .card-header {
+        background-color: navy;
+    } */
+</style>
 @endsection

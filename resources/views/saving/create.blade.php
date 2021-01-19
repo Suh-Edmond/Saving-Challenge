@@ -6,7 +6,7 @@
         <div class="col-6 col-md-6 col-xs-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class=" fw-bold text-center text-white">Deposite Saving</h5>
+                    <h4 class="w-bold text-center text-white">Deposite Saving</h5>
                 </div>
                 <div class="card-body">
                     <form class="form" method="POST" action="/saving/get/challenges/{{$id}}/">
@@ -41,7 +41,7 @@
 </div>
 <style scoped>
     .card-header {
-        background-color: blue;
+        background-color: navy;
     }
 </style>
 @endsection
