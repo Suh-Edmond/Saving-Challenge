@@ -51,7 +51,7 @@
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search challenge" name="challenge_type" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -65,17 +65,13 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
+                        <i class="fas fa-bell fa-lg"></i>
+                        @if(Auth::user()->notifications->pluck('notifiable_id')->count() !=0)
+                        <span class="badge badge-danger navbar-badge" style="font-size: 1rem;">
+                            {{Auth::user()->notifications->pluck('notifiable_id')->count()}}
+                        </span>
+                        @endif
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                    </div>
                 </li>
 
             </ul>

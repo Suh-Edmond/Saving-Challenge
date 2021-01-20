@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center pt-4">
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12">
+        <div class="col-6 col-md-6 col-xs-12 col-sm-12 ">
             <div class="card">
                 <div class="card-header bg-primary bg-gradient">
                     <h4 class="fw-bold text-center text-white">Create Saving Challenge</h5>

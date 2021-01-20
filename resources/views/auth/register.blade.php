@@ -14,7 +14,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
                         <div class="form-group ">
                             <label for="first_name" class=" col-form-label text-md-right">{{ __('First Name:') }}</label>
                             <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autofocus>
@@ -43,40 +42,40 @@
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                         </div>
                         <div class="col-md-6 ">
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                            <span role="alert" class="text-danger h6 fw-small">
+                                {{ $errors->first('email') }}
                             </span>
-                            @enderror
                         </div>
                         <div class="form-group ">
                             <label for="telephone" class=" col-form-label text-md-right">{{ __('Telephone:') }}</label>
                             <input id="telephone" type="telephone" class="form-control @error('telephone') is-invalid @enderror" name="telephone" value="{{ old('telephone') }}" required>
                         </div>
-                        <div class="col-md-6 text-danger" role="alert">
-                            {{$errors->first('telephone')}}
+                        <div class="col-md-6 ">
+                            <span role="alert" class="text-danger h6 fw-small">
+                                {{ $errors->first('telephone') }}
+                            </span>
                         </div>
                         <div class="form-group ">
                             <label for="password" class=" col-form-label text-md-right">{{ __('Password:') }}</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
                         </div>
                         <div class="col-md-6 ">
-
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                            <span role="alert" class="text-danger h6 fw-small">
+                                {{ $errors->first('password') }}
                             </span>
-                            @enderror
                         </div>
                         <div class="form-group  ">
                             <label for="password-confirm" class=" col-form-label text-md-right">{{ __('Confirm Password:') }}</label>
-
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
-
-                        <div class="form-group row mb-0 pt-2">
-                            <div class="d-flex  justify-content-center">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="col-md-6 ">
+                            <span role="alert" class="text-danger h6 fw-small">
+                                {{ $errors->first('confirm-password') }}
+                            </span>
+                        </div>
+                        <div class="form-group row mb-0  d-flex justify-content-center">
+                            <div class="">
+                                <button type="submit" class="btn btn-primary custom-btn">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -98,9 +97,14 @@
         background-color: blue;
     }
 
-    /*
-    .btn {
-        background-color: navy;
-    } */
+
+    .custom-btn {
+        width: 11rem;
+
+    }
+
+    .fw-small {
+        font-size: 0.8rem;
+    }
 </style>
 @endsection

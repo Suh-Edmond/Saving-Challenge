@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HasSavingType;
+use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -9,6 +11,7 @@ use Session;
 
 class HasSavingTypeController extends Controller
 {
+    private $message;
     //add a saving  type to the list of selected savings
     public function store($id)
     {
@@ -17,7 +20,8 @@ class HasSavingTypeController extends Controller
             'user_id' => $user_id,
             'saving_type_id' => $id
         ]);
-        Session::flash('message', "Saving Challenge Selected!   ");
+        $this->message = "Saving Challenge Selected!";
+        Session::flash('message', $this->message);
         return redirect()->back();
     }
 

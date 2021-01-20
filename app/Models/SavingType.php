@@ -20,4 +20,9 @@ class SavingType extends Model
     {
         return $this->hasMany(Savings::class);
     }
+
+    public function scopeSearch($query)
+    {
+        return $query->where('challenge_type', 'LIKE', '%' . request()->challenge_type . '%');
+    }
 }
