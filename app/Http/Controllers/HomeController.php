@@ -15,10 +15,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    private $completed_challenges = 0;
-    private $zero_challenges = 0;
-    public $finish_challenges = [];
-    private $zero_saving_challenges;
+    private $completed_challenges = 0; // to hold the number of completed challenges
+    private $zero_challenges = 0; //to hold the number of zero saving challenges
+    public $finish_challenges = []; //to hold all finished challenges
+    private $zero_saving_challenges = []; //to hold the details for all zero saving challenges
     public function __construct()
     {
         $this->middleware('auth');
@@ -130,22 +130,39 @@ class HomeController extends Controller
         return ($this->zero_challenges);
     }
     //get detail for zero saving challenges
-    public function  ZeroSavedCahallenges()
+    private function  ZeroSavedCahallengesDetails()
     {
         $user_id = Auth::user()->id;
         $challenges = $this->getSelectedChallenges();
         for ($i = 0; $i <  count($challenges); $i++) {
-            $this->zero_saving_challenges = DB::table('savings')
+            $saving_challenge = DB::table('savings')
                 ->join('users', 'users.id', '=', 'savings.user_id')
                 ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
                 ->where('users.id', '=', $user_id)
                 ->where('saving_types.id',  '=', $challenges[$i]->id)
-                ->where('savings.balance', '=', 0)
                 ->select('saving_types.*')
                 ->orderBy('savings.id', 'DESC')->first();
+            if ($saving_challenge == null) {
+                //create a new variabele to hold the current challenge with zero savings
+                $zero_saving_challenge = DB::table('saving_types')->where('id', '=', $challenges[$i]->id)->select('*')->orderBy('created_at')->get();
+                array_push($this->zero_saving_challenges, $zero_saving_challenge);
+            } else {
+                continue;
+            }
         }
-        $zero_saving_challenges = $this->zero_saving_challenges;
-        dd($zero_saving_challenges);
-        // return view('home.zeroChallenges', compact('zero_saving_challenges'));
+        // $zero_saving_challenges = $this->zero_saving_challenges;
+        //dd($this->zero_saving_challenges);
+        return $this->zero_saving_challenges;
+    }
+    //get the zero saving challenges
+    public function ZeroSavedChallenges()
+    {
+        $challenges = $this->ZeroSavedCahallengesDetails();
+        for ($i = 0; $i < count($challenges); $i++) {
+            $types = $challenges[$i];
+        }
+
+        //dd(($type)->id);
+        return view('home.zeroChallenges', compact("types"));
     }
 }

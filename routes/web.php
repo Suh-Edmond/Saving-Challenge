@@ -36,7 +36,7 @@ Route::get("saving/get/challenges/{id}/", [App\Http\Controllers\SavingController
 //routeto get completed challenges
 Route::get("challenges/completed_challenges", [App\Http\Controllers\HomeController::class, 'getDetailCompletedChallenges'])->middleware('auth');
 //route to get zero saving challenges
-Route::get("challenges/zero_challenges", [App\Http\Controllers\HomeController::class, 'ZeroSavedCahallenges'])->middleware('auth');
+Route::get("challenges/zero_challenges", [App\Http\Controllers\HomeController::class, 'ZeroSavedChallenges'])->middleware('auth');
 Auth::routes();
 //home route
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');

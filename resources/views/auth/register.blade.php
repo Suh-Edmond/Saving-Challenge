@@ -14,7 +14,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
                         <div class="form-group ">
                             <label for="first_name" class=" col-form-label text-md-right">{{ __('First Name:') }}</label>
                             <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autofocus>
@@ -74,8 +73,8 @@
                                 {{ $errors->first('confirm-password') }}
                             </span>
                         </div>
-                        <div class="form-group row mb-0 pt-3">
-                            <div class="d-flex  justify-content-center">
+                        <div class="form-group row mb-0  d-flex justify-content-center">
+                            <div class="">
                                 <button type="submit" class="btn btn-primary custom-btn">
                                     {{ __('Register') }}
                                 </button>

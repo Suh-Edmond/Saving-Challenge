@@ -20,7 +20,7 @@
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         </div>
-                        <div class="col-md-6 pb-4">
+                        <div class="col-md-6">
                             <span role="alert" class="text-danger h6 fw-small">
                                 {{ $errors->first('email') }}
                             </span>
@@ -35,8 +35,8 @@
                                 {{ $errors->first('password') }}
                             </span>
                         </div>
-                        <div class="form-group row mb-0 pt-4 pb-4">
-                            <div class="d-flex  justify-content-center">
+                        <div class="form-group row mb-0  pb-2 d-flex  justify-content-center">
+                            <div class=" ">
                                 <button type="submit" class="btn btn-primary custom-btn">
                                     {{ __('Login') }}
                                 </button>

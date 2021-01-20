@@ -65,19 +65,13 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
+                        <i class="fas fa-bell fa-lg"></i>
+                        @if(Auth::user()->notifications->pluck('notifiable_id')->count() !=0)
+                        <span class="badge badge-danger navbar-badge" style="font-size: 1rem;">
+                            {{Auth::user()->notifications->pluck('notifiable_id')->count()}}
+                        </span>
+                        @endif
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header"> Saving Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item">
-                            <!-- <i class="fas fa-envelope mr-2"></i>  new messages
-                             
-                            <span class="float-right text-muted text-sm"> </span>
-                            -->
-                        </a>
-                    </div>
                 </li>
 
             </ul>
