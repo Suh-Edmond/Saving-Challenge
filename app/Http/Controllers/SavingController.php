@@ -15,7 +15,7 @@ class SavingController extends Controller
     //view all selected savings
     public function index()
     {
-        $user_id = Auth::user()->id; // fake user id
+        $user_id = Auth::user()->id;
         $saving_challenges = DB::table('has_saving_types')
             ->join('users', 'users.id', '=', 'has_saving_types.user_id')
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')

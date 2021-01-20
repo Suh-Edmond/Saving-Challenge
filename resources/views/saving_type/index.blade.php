@@ -38,6 +38,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($saving_types != "Not Found")
                             @foreach($saving_types as $saving_type)
                             <tr>
                                 <th scope="row">{{$saving_type->id}}</th>
@@ -52,14 +53,29 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                     <div class="row justify-content-center pt-3">
+                        @if($saving_types != "Not Found")
                         <div>
                             {{$saving_types->links('pagination::bootstrap-4')}}
 
                         </div>
+                        @endif
                     </div>
+                    @if($saving_types == "Not Found")
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-6 col-md-6 col-lg-6 col-xs-12 col-sm-12 text-white text-center">
+                            <div class="alert alert-warning alert-dismissible fade show">
+                                <strong class="text-white">Searched Challenge Not Found</strong>
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -51,7 +51,7 @@
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search challenge" name="challenge_type" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -69,11 +69,13 @@
                         <span class="badge badge-warning navbar-badge">15</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <span class="dropdown-item dropdown-header"> Saving Notifications</span>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
+                            <!-- <i class="fas fa-envelope mr-2"></i>  new messages
+                             
+                            <span class="float-right text-muted text-sm"> </span>
+                            -->
                         </a>
                     </div>
                 </li>

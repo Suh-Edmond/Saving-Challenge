@@ -10,7 +10,13 @@ class SavingTypeController extends Controller
     //view all saving types
     public function index()
     {
-        $saving_types = SavingType::paginate(5);
+
+        if (SavingType::search()->get() == "[]") {
+            $saving_types = "Not Found";
+        } else if (SavingType::search()->get() != "[]") {
+            $saving_types =  SavingType::search()->paginate(5);
+        }
+        //  dd($saving_types);
         return view('saving_type.index', compact("saving_types"));
     }
 

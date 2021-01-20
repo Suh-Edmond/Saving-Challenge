@@ -19,9 +19,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light  shadow-sm">
+        <nav class="navbar navbar-expand-md  bg-primary bg-gradient ">
             <div class="container">
-                <h1 class="navbar-brand  header">
+                <h1 class="navbar-brand  text-white header">
                     {{ config('app.name', 'Saving Challenge') }}
                 </h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -40,13 +40,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item ">
-                            <a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
