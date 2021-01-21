@@ -66,11 +66,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown">
                         <i class="fas fa-bell fa-lg"></i>
-                        @if(Auth::user()->notifications->pluck('notifiable_id')->count() !=0)
-                        <span class="badge badge-danger navbar-badge" style="font-size: 1rem;">
-                            {{Auth::user()->notifications->pluck('notifiable_id')->count()}}
-                        </span>
-                        @endif
+
                     </a>
                 </li>
 
@@ -149,7 +145,7 @@
 
                                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <i class="nav-icon fa fa-sign-out"></i>
+                                        <i class="nav-icon fa fa-sign-out" aria-hidden="true"></i>
                                         {{ __('Logout') }}
                                     </a>
 

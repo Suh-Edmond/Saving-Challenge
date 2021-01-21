@@ -20,9 +20,9 @@
                                 <th scope="col">S/N</th>
                                 <th scope="col">Challenge Type</th>
                                 <th scope="col">Number of Weeks</th>
-                                <th scope="col">Amount Deposited</th>
-                                <th scope="col">Balance</th>
-                                <th scope="col">Total Amount Earned</th>
+                                <th scope="col">Amount Deposited (CFA)</th>
+                                <th scope="col">Balance (CFA)</th>
+                                <th scope="col">Total Amount Earned (CFA)</th>
                             </tr>
                         </thead>
                         <tbody>

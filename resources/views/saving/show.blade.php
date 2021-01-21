@@ -22,9 +22,9 @@
                         <thead class="bg-primary text-white">
                             <tr>
                                 <th scope="col">Week Number</th>
-                                <th scope="col">Amount Deposited</th>
+                                <th scope="col">Amount Deposited (CFA)</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Balance</th>
+                                <th scope="col">Balance (CFA)</th>
                             </tr>
                         </thead>
                         <tbody>

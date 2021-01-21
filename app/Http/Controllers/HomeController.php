@@ -157,12 +157,11 @@ class HomeController extends Controller
     //get the zero saving challenges
     public function ZeroSavedChallenges()
     {
+        $types  = [];
         $challenges = $this->ZeroSavedCahallengesDetails();
         for ($i = 0; $i < count($challenges); $i++) {
             $types = $challenges[$i];
         }
-
-        //dd(($type)->id);
         return view('home.zeroChallenges', compact("types"));
     }
 }
