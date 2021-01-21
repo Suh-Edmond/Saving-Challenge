@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Saving Challenge</title>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -28,23 +29,18 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <div id="app">
         <nav class="navbar navbar-expand-md  bg-primary bg-gradient ">
             <div class="container">
-                <h1 class="navbar-brand  text-white header">
-                    {{ config('app.name', 'Saving Challenge') }}
-                </h1>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
+                <div>
+                    <h6 class="navbar-brand  text-white " style="font-weight: bolder; font-size:larger">
+                        {{ config('app.name', 'Saving Challenge') }}
+                    </h6>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -77,15 +73,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer class="d-flex justify-content-center footer p-4">
-            <div>
-                <strong>Copyright &copy; 2021.</strong>
-                All rights reserved.
-                <div class=" d-none d-sm-inline-block">
-                    <b>Version</b> 1.0
-                </div>
-            </div>
-        </footer>
     </div>
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js')}}"></script>
@@ -124,15 +111,3 @@
 </body>
 
 </html>
-
-<style scoped>
-    .header {
-        font-weight: bolder;
-        font-size: 1.8rem;
-    }
-
-
-    .footer {
-        background-color: darkblue;
-    }
-</style>

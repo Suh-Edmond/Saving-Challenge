@@ -31,7 +31,7 @@
                             <tr>
                                 <th scope="col">Challenge Type</th>
                                 <th scope="col">Number of Weeks</th>
-                                <th scope="col">Total Amount Earned</th>
+                                <th scope="col">Total Amount Earned (CFA)</th>
                                 <th scope="col">Action</th>
                                 <th scope="col">Action</th>
                             </tr>

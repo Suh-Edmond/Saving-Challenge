@@ -15,12 +15,11 @@ class SavingTypeSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 20; $i++) {
-            DB::table("saving_types")->insert([
-                "challenge_type" => $faker->creditCardType,
-                "number_of_weeks" => random_int(1, 52),
-                "total_amount" => $faker->numberBetween(100000, 500000)
-            ]);
-        }
+
+        DB::table("saving_types")->insert([
+            "challenge_type" => "2000 Start Challenge",
+            "number_of_weeks" => 52,
+            "total_amount" => 2756000
+        ]);
     }
 }
