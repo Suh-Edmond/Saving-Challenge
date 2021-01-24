@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get("/", [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth');
 //view all available saving types
 Route::get("saving/challenges/", [App\Http\Controllers\SavingTypeController::class, 'index'])->middleware('auth');
 ///add a new saving challenge

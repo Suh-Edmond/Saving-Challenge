@@ -23,6 +23,6 @@ class SavingType extends Model
 
     public function scopeSearch($query)
     {
-        return empty(request()->search) ? $query : $query->where('challenge_type', 'LIKE', '%' . request()->challenge_type . '%');
+        return  $query->where('challenge_type', 'LIKE', '%' . request()->challenge_type . '%');
     }
 }

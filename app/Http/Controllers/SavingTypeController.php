@@ -31,8 +31,8 @@ class SavingTypeController extends Controller
     {
         $data = request()->validate([
             'challenge_type' => 'required',
-            'number_of_weeks' => 'required|min:1',
-            'total_amount' => 'required'
+            'number_of_weeks' => 'required|min:1|numeric',
+            'total_amount' => 'required|numeric'
         ]);
         SavingType::create($data);
         return redirect('/saving/challenges');

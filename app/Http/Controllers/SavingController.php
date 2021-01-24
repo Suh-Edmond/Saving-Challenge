@@ -50,8 +50,8 @@ class SavingController extends Controller
     public function store($id)
     {
         $saving = request()->validate([
-            'week_number' => 'required',
-            'amount_deposited' => 'required',
+            'week_number' => 'required|numeric',
+            'amount_deposited' => 'required|numeric',
         ]);
         $current_balance = DB::table('has_saving_types')
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')

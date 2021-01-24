@@ -14,8 +14,12 @@
         </div>
         @endif
     </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12">
+    <div class="row justify-content-center ">
+        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12 pl-3">
+
+            <a href="{{ URL::previous() }}"><i class="fas fa-arrow-left fa-lg"></i></a>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 pt-3">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between pt-3">
@@ -48,9 +52,13 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
-                                        <span><i class="nav-icon fas fa-trash"></i></span>
-                                    </button>
+                                    <form method="POST" action="/saving/get/challenges/{{$saving_challenge->id}}/">
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger">
+                                            <span><i class="nav-icon fas fa-trash"></i></span>
+                                        </button>
+                                        @csrf
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -84,29 +92,7 @@
         </div>
 
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal">
-        <div class="modal-dialog  modal-sm modal-dialog-centered">
-            <div class="modal-content">
-                @if(count($saving_challenges) != 0)
-                <div class="modal-body">
-                    @for($i =0; $i < 1; $i++) <p class="h6">Delete Saving Challenge?</p>
-                        <p>{{$saving_challenges[$i]->challenge_type}}</p>@endfor
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light  text-primary" data-dismiss="modal">
-                        Close</button>
-                    @for($i =0; $i < 1; $i++) <form method="POST" action="/saving/get/challenges/{{$saving_challenges[$i]->id}}/">
-                        @method('DELETE')
-                        <button class="btn btn-light text-danger">Delete</button>
-                        @csrf
-                        </form>
-                        @endfor
-                </div>
-                @endif
-            </div>
-        </div>
-    </div>
+
 
 </div>
 

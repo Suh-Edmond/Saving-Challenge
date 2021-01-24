@@ -2,8 +2,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12">
+    <div class="row justify-content-center pt-3">
+        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12 pl-3">
+
+            <a href="{{ URL::previous() }}"><i class="fas fa-arrow-left fa-lg"></i></a>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12 pt-3">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between pt-3">
