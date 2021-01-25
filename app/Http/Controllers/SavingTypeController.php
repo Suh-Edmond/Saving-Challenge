@@ -32,6 +32,7 @@ class SavingTypeController extends Controller
         $data = request()->validate([
             'challenge_type' => 'required',
             'number_of_weeks' => 'required|min:1|numeric',
+            'amount_payable' => 'required|numeric',
             'total_amount' => 'required|numeric'
         ]);
         SavingType::create($data);

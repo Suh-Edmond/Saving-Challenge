@@ -24,7 +24,6 @@
                                 <th scope="col">S/N</th>
                                 <th scope="col">Challenge Type</th>
                                 <th scope="col">Number of Weeks</th>
-                                <th scope="col">Amount Deposited (CFA)</th>
                                 <th scope="col">Balance (CFA)</th>
                                 <th scope="col">Total Amount Earned (CFA)</th>
                             </tr>
@@ -35,7 +34,6 @@
                                 <td>{{$challenge->id}}</td>
                                 <td>{{$challenge->challenge_type}}</td>
                                 <td>{{$challenge->number_of_weeks}}</td>
-                                <td>{{$challenge->amount_deposited}}</td>
                                 <td>{{$challenge->balance}}</td>
                                 <td>{{$challenge->total_amount}}</td>
                             </tr>

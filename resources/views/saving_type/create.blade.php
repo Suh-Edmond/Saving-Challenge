@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center pt-3">
+    <div class="row justify-content-center pt-1">
         <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12 pl-3">
             <a href="{{ URL::previous() }}"><i class="fas fa-arrow-left fa-lg"></i></a>
         </div>
@@ -41,10 +41,23 @@
                         </div>
                         <div class="row rounded-border pb-1 form-group">
                             <div class=" col-12 col-sm-12 col-lg-12 col-xs-12  ">
-                                <h6 class="fw-normal">Amount Earned</h6>
+                                <h6 class="fw-normal">Amount Payable (CFA)</h6>
                             </div>
                             <div class="col-12 col-sm-12 col-lg-12 col-xs-12">
-                                <input type="text" class="form-control" name="total_amount" required>
+                                <input type="number" class="form-control" name="amount_payable" required>
+                            </div>
+                            <div class="col-md-8 col-sm-12 col-xs-12">
+                                <span role="alert" class="text-danger h6 fw-small">
+                                    {{ $errors->first('amount_payable') }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row rounded-border pb-1 form-group">
+                            <div class=" col-12 col-sm-12 col-lg-12 col-xs-12  ">
+                                <h6 class="fw-normal">Amount Earned (CFA)</h6>
+                            </div>
+                            <div class="col-12 col-sm-12 col-lg-12 col-xs-12">
+                                <input type="number" class="form-control" name="total_amount" required>
                             </div>
                             <div class="col-md-8 col-sm-12 col-xs-12">
                                 <span role="alert" class="text-danger h6 fw-small">

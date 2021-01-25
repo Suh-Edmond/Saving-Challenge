@@ -19,6 +19,7 @@ class SavingTypeSeeder extends Seeder
         DB::table("saving_types")->insert([
             "challenge_type" => "2000 Start Challenge",
             "number_of_weeks" => 52,
+            "amount_payable" => 2000,
             "total_amount" => 2756000
         ]);
     }

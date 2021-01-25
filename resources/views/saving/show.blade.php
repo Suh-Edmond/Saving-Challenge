@@ -5,19 +5,25 @@
 
     <div class="row justify-content-center pt-3">
         <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12 pl-3">
-
             <a href="{{ URL::previous() }}"><i class="fas fa-arrow-left fa-lg"></i></a>
         </div>
+        @if($total_balance != null && $total_balance->balance == $total_amount)
+        <div class="col-8 col-md-8 col-sm-12 col-xs-12 bg-success p-3 text-center">
+            <strong>Congratulations! you have successfully completed this Challenge</strong>
+        </div>
+        @endif
         <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 pt-3">
             <div class="card">
                 <div class="card-header">
-                    <div class="d-flex justify-content-between pt-3">
-                        <p class=" text-primary h3">My Savings </p>
-                        <p>
+                    <div class="d-flex justify-content-between pt-2">
+                        <div class=" text-primary h3">My Savings </div>
+                        @if($total_balance == null || $total_balance->balance != $total_amount)
+                        <div>
                             <a class="btn btn-outline-primary" href="/saving/get/challenges/{{$id}}/add" role="button">
                                 Add Saving
                             </a>
-                        </p>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
