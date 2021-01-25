@@ -29,13 +29,24 @@ class SavingController extends Controller
     //add savings. need to pass the number of weeks for the challenge
     public function create($id)
     {
-        $number_of_weeks = SavingType::findOrFail($id)->number_of_weeks;
-        return view("saving.create", compact('id', 'number_of_weeks'));
+        $amount_payable = SavingType::findOrFail($id)->amount_payable;
+        //get the last saving that was made for this challenge, so the user can increments his saving
+        $last_saving = DB::table('savings')
+            ->join('users', 'users.id', '=', 'savings.user_id')
+            ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
+            ->where('users.id', '=', Auth::user()->id)
+            ->where('saving_types.id', '=', $id)
+            ->select('savings.week_number', 'savings.amount_deposited')
+            ->orderBy('savings.created_at', 'desc')->first();
+        //dd($last_saving);
+        return view("saving.create", compact('id',  'last_saving', 'amount_payable'));
         //dd($number_of_weeks);
     }
     //view all savings of a particular type
     public function show($id)
     {
+        $total_amount = SavingType::findOrFail($id)->total_amount;
+        $total_balance = $this->totalBalance($id);
         $savings = DB::table('savings')
             ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
             ->join('users', 'users.id', '=', 'savings.user_id')
@@ -44,14 +55,26 @@ class SavingController extends Controller
             ->select('saving_types.id', 'savings.week_number', 'savings.amount_deposited', 'savings.status', 'savings.balance')
             ->paginate(5);
         //dd($savings);
-        return view('saving.show', compact('savings', 'id'));
+        return view('saving.show', compact('savings', 'id', 'total_amount', 'total_balance'));
+    }
+    //get the total amount deposited for a challenge
+    private function totalBalance($challenge_id)
+    {
+        $total_balance = DB::table('savings')
+            ->join('users', 'users.id', '=', 'savings.user_id')
+            ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
+            ->where('users.id', '=', Auth::user()->id)
+            ->where('saving_types.id', '=', $challenge_id)
+            ->select('savings.balance')
+            ->orderBy('savings.created_at', 'desc')->first();
+        return $total_balance;
     }
     //add  a new saving to a particular saving type by a owner of the savin type
     public function store($id)
     {
         $saving = request()->validate([
-            'week_number' => 'required',
-            'amount_deposited' => 'required',
+            'week_number' => 'required|numeric',
+            'amount_deposited' => 'required|numeric',
         ]);
         $current_balance = DB::table('has_saving_types')
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')

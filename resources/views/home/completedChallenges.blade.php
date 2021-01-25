@@ -2,8 +2,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12">
+    <div class="row justify-content-center pt-3">
+        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12 pl-3">
+
+            <a href="{{ URL::previous() }}"><i class="fas fa-arrow-left fa-lg"></i></a>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12 pt-3">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between pt-3">
@@ -20,7 +24,6 @@
                                 <th scope="col">S/N</th>
                                 <th scope="col">Challenge Type</th>
                                 <th scope="col">Number of Weeks</th>
-                                <th scope="col">Amount Deposited (CFA)</th>
                                 <th scope="col">Balance (CFA)</th>
                                 <th scope="col">Total Amount Earned (CFA)</th>
                             </tr>
@@ -31,7 +34,6 @@
                                 <td>{{$challenge->id}}</td>
                                 <td>{{$challenge->challenge_type}}</td>
                                 <td>{{$challenge->number_of_weeks}}</td>
-                                <td>{{$challenge->amount_deposited}}</td>
                                 <td>{{$challenge->balance}}</td>
                                 <td>{{$challenge->total_amount}}</td>
                             </tr>

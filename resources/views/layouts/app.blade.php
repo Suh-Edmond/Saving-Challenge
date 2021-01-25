@@ -66,7 +66,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown">
                         <i class="fas fa-bell fa-lg"></i>
-
+                        @if(Auth::user()->notifications->pluck('notifiable_id')->count() !=0)
+                        <span class="badge badge-danger navbar-badge" style="font-size: 1rem;">
+                            {{Auth::user()->notifications->pluck('notifiable_id')->count()}}
+                        </span>
+                        @endif
                     </a>
                 </li>
 

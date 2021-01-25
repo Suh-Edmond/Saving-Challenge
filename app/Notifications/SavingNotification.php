@@ -41,7 +41,7 @@ class SavingNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = "localhost:8000/login";
+        $url = "localhost:8000";
         return (new MailMessage)
             ->from('suhedmond25@yahoo.com', 'Saving Challenge')
             ->greeting($this->saving_notification['name'])

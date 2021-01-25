@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row d-flex justify-content-center pt-3">
+    <div class="row d-flex justify-content-center pt-4">
+
         <div class="card" style="width: 40rem;">
             <div class="pl-4 pt-4">
                 <label class="h3">Profile</label>

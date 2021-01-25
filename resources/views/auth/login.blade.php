@@ -20,7 +20,7 @@
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-sm-12 col-xs-12">
                             <span role="alert" class="text-danger h6 fw-small">
                                 {{ $errors->first('email') }}
                             </span>
@@ -30,7 +30,7 @@
                             <label for="password" class=" col-form-label text-md-right">{{ __('Password') }}</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                         </div>
-                        <div class="col-md-8 ">
+                        <div class="col-md-8 col-sm-12 col-xs-12">
                             <span role="alert" class="text-danger h6 fw-small">
                                 {{ $errors->first('password') }}
                             </span>
@@ -58,7 +58,7 @@
     }
 
     .fw-small {
-        width: 0.8rem;
+        width: 0.7rem;
     }
 
     .btn {

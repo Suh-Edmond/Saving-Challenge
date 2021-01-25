@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SavingType;
 use App\Notifications\SavingNotification;
 use Notification;
 use App\Models\User;

@@ -2,9 +2,10 @@
 
 @section('content')
 <div class="container">
-    <div class="row d-flex justify-content-center pt-3">
+    <div class="row d-flex justify-content-center pt-4">
+
         <div class="card  " style="width: 40rem;">
-            <div class="d-flex justify-content-center pt-3">
+            <div class="d-flex justify-content-center pt-1">
                 <avatar size="100px">
                     <img src="{{asset('/dist/img/user.png')}}" style="width: 100px; height: 100px" />
                 </avatar>
