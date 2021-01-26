@@ -120,7 +120,7 @@
                                     @foreach($saving_types as $saving_type)
                                     <tr>
                                         <th scope="row">{{$saving_type->id}}</th>
-                                        <td>{{$saving_type->challenge_type}}</td>
+                                        <td>{{$saving_type->challengeType->challenge_type}}</td>
                                         <td>{{$saving_type->number_of_weeks}}</td>
                                         <td>{{$saving_type->total_amount}}</td>
                                         <td>

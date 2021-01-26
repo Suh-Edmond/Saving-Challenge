@@ -21,8 +21,9 @@ class SavingType extends Model
         return $this->hasMany(Savings::class);
     }
 
-    public function scopeSearch($query)
+    //eloquent relationship between challengetype and savingtype models
+    public function challengeType()
     {
-        return  $query->where('challenge_type', 'LIKE', '%' . request()->challenge_type . '%');
+        return $this->belongsTo(ChallengeType::class);
     }
 }

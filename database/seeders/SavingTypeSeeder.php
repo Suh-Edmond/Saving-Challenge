@@ -13,11 +13,16 @@ class SavingTypeSeeder extends Seeder
      *
      * @return void
      */
+    private $challenge_type;
+    public function __construct()
+    {
+        $this->challenge_type = DB::table('challenge_types')->count("id");
+    }
     public function run(Faker $faker)
     {
 
         DB::table("saving_types")->insert([
-            "challenge_type" => "2000 Start Challenge",
+            "challenge_type" => random_int(1, $this->challenge_type),
             "number_of_weeks" => 52,
             "amount_payable" => 2000,
             "total_amount" => 2756000

@@ -33,6 +33,7 @@
                     <table class="table  table-hover table-striped table-md ">
                         <thead class="bg-primary text-white">
                             <tr>
+                                <th scope="col">S/N</th>
                                 <th scope="col">Challenge Type</th>
                                 <th scope="col">Number of Weeks</th>
                                 <th scope="col">Total Amount Earned (CFA)</th>
@@ -43,6 +44,7 @@
                         <tbody>
                             @foreach($saving_challenges as $saving_challenge)
                             <tr>
+                                <th scope="row">{{$saving_challenge->id}}</th>
                                 <td>{{$saving_challenge->challenge_type}}</td>
                                 <td>{{$saving_challenge->number_of_weeks}}</td>
                                 <td>{{$saving_challenge->total_amount}}</td>

@@ -18,11 +18,16 @@
                                 Challenge Type
                             </div>
                             <div class="form-group pb-1 col-12 col-sm-12 col-lg-12 col-xs-12">
-                                <input type="text" class="form-control" name="challenge_type" required>
+                                <select class="form-control" required name="challenge_type_id" id="challenge_type_id">
+                                    <option selected>Select Challenge Type</option>
+                                    @foreach($challenges as $challenge)
+                                    <option value="{{$challenge->id}}">{{$challenge->challenge_type}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-md-8 col-sm-12 col-xs-12">
                                 <span role="alert" class="text-danger h6 fw-small">
-                                    {{ $errors->first('challenge_type') }}
+                                    {{ $errors->first('challenge_type_id') }}
                                 </span>
                             </div>
                         </div>
