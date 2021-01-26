@@ -39,10 +39,10 @@
                             </div>
                             <div class="col-12 col-sm-12 col-lg-12 col-xs-12">
                                 @if($last_saving == null)
-                                <input type="number" class="form-control" name="amount_deposited" required value="{{$amount_payable}}">
+                                <input type="number" class="form-control" name="amount_deposited" required value="{{$amount_payable}}" readonly>
                                 @endif
                                 @if($last_saving != null)
-                                <input type="number" class="form-control" name="amount_deposited" required value="{{$amount_payable + $last_saving->amount_deposited}}">
+                                <input type="number" class="form-control" name="amount_deposited" value="{{$amount_payable + $last_saving->amount_deposited}}" readonly>
                                 @endif
                             </div>
                             <div class="col-md-8 col-sm-12 col-xs-12">

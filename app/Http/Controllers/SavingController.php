@@ -74,8 +74,9 @@ class SavingController extends Controller
     {
         $saving = request()->validate([
             'week_number' => 'required|numeric',
-            'amount_deposited' => 'required|numeric',
+            'amount_deposited' => 'numeric'
         ]);
+        // dd(request()->all());
         $current_balance = DB::table('has_saving_types')
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
             ->join('users', 'users.id', '=', 'has_saving_types.user_id')
