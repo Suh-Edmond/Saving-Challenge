@@ -17,7 +17,7 @@ class CreateChallengeTypesTable extends Migration
         Schema::create('challenge_types', function (Blueprint $table) {
             $table->id();
             $table->string('challenge_type');
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });

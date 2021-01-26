@@ -15,11 +15,31 @@ class ChallengeTypeSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 10; $i++) {
-            DB::table("challenge_types")->insert([
-                "challenge_type" => $faker->countryCode,
-                "description" => $faker->sentence(),
-            ]);
-        }
+        DB::table("challenge_types")->insert([
+            "challenge_type" => "2000 Start Challenge",
+            "description" => "This is a 2000Frs Start Challenge",
+        ]);
+
+        DB::table("challenge_types")->insert([
+            "challenge_type" => "5000 Start Challenge",
+            "description" => "This is a 5000Frs Start Challenge",
+        ]);
+
+        DB::table("challenge_types")->insert([
+            "challenge_type" => "7000 Start Challenge",
+            "description" => "This is a 7000Frs Start Challenge",
+        ]);
+        DB::table("challenge_types")->insert([
+            "challenge_type" => "500 Start Challenge",
+            "description" => "This is a 500Frs Start Challenge",
+        ]);
+        DB::table("challenge_types")->insert([
+            "challenge_type" => "1000 Start Challenge",
+            "description" => "This is a 1000Frs Start Challenge",
+        ]);
+        DB::table("challenge_types")->insert([
+            "challenge_type" => "3000 Start Challenge",
+            "description" => "This is a 3000Frs Start Challenge",
+        ]);
     }
 }

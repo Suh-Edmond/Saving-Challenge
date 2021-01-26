@@ -22,7 +22,7 @@ class SavingTypeSeeder extends Seeder
     {
 
         DB::table("saving_types")->insert([
-            "challenge_type" => random_int(1, $this->challenge_type),
+            "challenge_type_id" => random_int(1, 1),
             "number_of_weeks" => 52,
             "amount_payable" => 2000,
             "total_amount" => 2756000

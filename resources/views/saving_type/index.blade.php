@@ -38,11 +38,11 @@
                                 <th scope="col">Challenge Type</th>
                                 <th scope="col">Number of Weeks</th>
                                 <th scope="col">Total Amount Earned (CFA)</th>
-                                <th scope="col">Action</th>
+                                <th scope="col"> </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if($saving_types != "Not Found")
+                            @if($saving_types != null)
                             @foreach($saving_types as $saving_type)
                             <tr>
                                 <th scope="row">{{$saving_type->id}}</th>
@@ -61,17 +61,17 @@
                         </tbody>
                     </table>
                     <div class="row justify-content-center pt-3">
-                        @if($saving_types != "Not Found")
+                        @if($saving_types != null)
                         <div>
                             {{$saving_types->links('pagination::bootstrap-4')}}
 
                         </div>
                         @endif
                     </div>
-                    @if($saving_types == "Not Found")
+                    @if($saving_types == null)
                     <div class="row d-flex justify-content-center">
                         <div class="col-6 col-md-6 col-lg-6 col-xs-12 col-sm-12 text-white text-center">
-                            <div class="alert alert-warning alert-dismissible fade show">
+                            <div class="alert alert-info alert-dismissible  show">
                                 <strong class="text-white">Searched Challenge Not Found</strong>
                                 <button type="button" class="close" data-dismiss="alert">
                                     <span>&times;</span>

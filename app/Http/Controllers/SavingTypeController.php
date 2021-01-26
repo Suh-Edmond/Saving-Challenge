@@ -12,12 +12,11 @@ class SavingTypeController extends Controller
     public function index()
     {
 
-        // if (SavingType::search()->get() == "[]") {
-        //     $saving_types = "Not Found";
-        // } else if (SavingType::search()->get() != "[]") {
-        //     $saving_types =  SavingType::search()->paginate(5);
-        // }
-        $saving_types = SavingType::paginate(5);
+        if (SavingType::search() == "Null") {
+            $saving_types = null;
+        } else if (SavingType::search() != "Null") {
+            $saving_types = SavingType::search()->select('id', 'challenge_type_id', 'number_of_weeks', 'amount_payable', 'total_amount')->paginate(5);
+        }
         return view('saving_type.index', compact("saving_types"));
     }
 

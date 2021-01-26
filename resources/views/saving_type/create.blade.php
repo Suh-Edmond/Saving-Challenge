@@ -13,11 +13,11 @@
                 </div>
                 <div class="card-body">
                     <form class="form" method="POST" action="/saving/challenges">
-                        <div class="row rounded-border ">
+                        <div class="row rounded-border   pb-2">
                             <div class="col-12 col-sm-12 col-lg-12 col-xs-12 h6 fw-normal ">
                                 Challenge Type
                             </div>
-                            <div class="form-group pb-1 col-12 col-sm-12 col-lg-12 col-xs-12">
+                            <div class=" pb-2   col-12 col-sm-12 col-lg-12 col-xs-12">
                                 <select class="form-control" required name="challenge_type_id" id="challenge_type_id">
                                     <option selected>Select Challenge Type</option>
                                     @foreach($challenges as $challenge)
@@ -31,11 +31,11 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="row rounded-border ">
+                        <div class="row rounded-border  pb-2 ">
                             <div class=" col-12 col-sm-12 col-lg-12 col-xs-12 h6 fw-normal ">
                                 Week Number
                             </div>
-                            <div class="form-group pb-1 col-12 col-sm-12 col-lg-12 col-xs-12">
+                            <div class=" pb-2   col-12 col-sm-12 col-lg-12 col-xs-12">
                                 <input type="number" class="form-control" name="number_of_weeks" required>
                             </div>
                             <div class="col-md-8 col-sm-12 col-xs-12">
@@ -44,7 +44,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="row rounded-border pb-1 form-group">
+                        <div class="row rounded-border   pb-3">
                             <div class=" col-12 col-sm-12 col-lg-12 col-xs-12  ">
                                 <h6 class="fw-normal">Amount Payable (CFA)</h6>
                             </div>
@@ -57,7 +57,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="row rounded-border pb-1 form-group">
+                        <div class="row rounded-border   pb-2">
                             <div class=" col-12 col-sm-12 col-lg-12 col-xs-12  ">
                                 <h6 class="fw-normal">Amount Earned (CFA)</h6>
                             </div>

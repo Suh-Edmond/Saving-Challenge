@@ -33,16 +33,15 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-        // if (SavingType::search()->get() == "[]") {
-        //     $saving_types = "Not Found";
-        // } else if (SavingType::search()->get() != "[]") {
-        //     $saving_types =  SavingType::search()->paginate(5);
-        // }
-        $saving_types = SavingType::paginate(5);
+        if (SavingType::search() == "Null") {
+            $saving_types = null;
+        } else if (SavingType::search() != "Null") {
+            $saving_types = SavingType::search()->select('id', 'challenge_type_id', 'number_of_weeks', 'amount_payable', 'total_amount')->paginate(5);
+        }
         $challenges = $this->getSelectedChallenges()->count();
         $finish_challenges = $this->getFinishChallenges();
         $zero_challenges = $this->getZeroSavingChallenges();
-        //dd($saving_types);
+
         return view('home.home', compact("saving_types", "challenges", "finish_challenges", "zero_challenges"));
     }
 
