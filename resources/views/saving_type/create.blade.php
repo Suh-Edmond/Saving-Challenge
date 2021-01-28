@@ -19,7 +19,7 @@
                             </div>
                             <div class=" pb-2   col-12 col-sm-12 col-lg-12 col-xs-12">
                                 <select class="form-control" required name="challenge_type_id" id="challenge_type_id">
-                                    <option selected>Select Challenge Type</option>
+
                                     @foreach($challenges as $challenge)
                                     <option value="{{$challenge->id}}">{{$challenge->challenge_type}}</option>
                                     @endforeach

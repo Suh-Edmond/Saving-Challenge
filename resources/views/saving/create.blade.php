@@ -8,7 +8,7 @@
         </div>
         <div class="col-6 col-md-6 col-xs-12 col-sm-12 pt-2">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-primary">
                     <h4 class="fw-bold text-center text-white">Deposite Saving</h5>
                 </div>
                 <div class="card-body">
@@ -62,8 +62,6 @@
     </div>
 </div>
 <style scoped>
-    .card-header {
-        background-color: blue;
-    }
+
 </style>
 @endsection

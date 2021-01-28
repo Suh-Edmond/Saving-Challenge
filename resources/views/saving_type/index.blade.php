@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center pt-3">
         @if (Session::has('message'))
-        <div class="col-12 col-md-12 col-lg-12 col-xs-12 colsm-12 text-center text-white">
+        <div class="col-6 col-md-6 col-lg-6 col-xs-12 colsm-12 text-center text-white">
             <div class="alert alert-success alert-dismissible fade show">
                 <strong>{{ Session::get('message') }}</strong>
                 <a href="/saving/get/challenges/" class="alert-link "> View Challenges</a>

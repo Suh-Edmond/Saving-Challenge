@@ -48,6 +48,7 @@ class SavingController extends Controller
     {
         $total_amount = SavingType::findOrFail($id)->total_amount;
         $total_balance = $this->totalBalance($id);
+        $total_week_number = SavingType::findOrFail($id)->number_of_weeks;
         $savings = DB::table('savings')
             ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
             ->join('users', 'users.id', '=', 'savings.user_id')
@@ -56,7 +57,7 @@ class SavingController extends Controller
             ->select('saving_types.id', 'savings.week_number', 'savings.amount_deposited', 'savings.status', 'savings.balance')
             ->paginate(5);
         //dd($savings);
-        return view('saving.show', compact('savings', 'id', 'total_amount', 'total_balance'));
+        return view('saving.show', compact('savings', 'id', 'total_amount', 'total_balance', 'total_week_number'));
     }
     //get the total amount deposited for a challenge
     private function totalBalance($challenge_id)

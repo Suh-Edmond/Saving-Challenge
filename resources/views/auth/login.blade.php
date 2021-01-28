@@ -5,7 +5,7 @@
     <div class="row justify-content-center pt-3">
         <div class="col-6 col-md-6 col-sm-12 col-xs-12">
             <div class="card">
-                <div class="card-header text-white">
+                <div class="card-header bg-primary text-white">
                     <div class="text-center  title ">
                         <h4>{{ __('Login to your Account') }}</h4>
                     </div>
@@ -53,9 +53,7 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
-    .card-header {
-        background-color: blue;
-    }
+
 
     .fw-small {
         width: 0.7rem;

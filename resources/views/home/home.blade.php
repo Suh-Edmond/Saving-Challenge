@@ -82,7 +82,7 @@
         <div class="container">
             <div class="row justify-content-center pt-3">
                 @if (Session::has('message'))
-                <div class="col-12 col-md-12 col-lg-12 col-xs-12 col-sm-12  col-xl-12 text-center text-white">
+                <div class="col-6 col-md-6 col-lg-6 col-xs-12 col-sm-12  col-xl-6 text-center text-white">
                     <div class="alert alert-success alert-dismissible fade show">
                         <strong>{{ Session::get('message') }}</strong>
                         <a href="/saving/get/challenges/" class="alert-link "> View Challenges</a>
@@ -112,7 +112,7 @@
                                         <th scope="col">Challenge Type</th>
                                         <th scope="col">Number of Weeks</th>
                                         <th scope="col">Total Amount Earned (CFA)</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col"> </th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -24,7 +24,7 @@ Route::post("saving/challenges", [App\Http\Controllers\SavingTypeController::cla
 //add a saving type to my selected saving types
 Route::post("saving/challenges/{id}", [App\Http\Controllers\HasSavingTypeController::class, 'store'])->middleware('auth');;
 //delete a saving type
-Route::delete("saving/get/challenges/{id}/", [App\Http\Controllers\HasSavingTypeController::class, 'destroy'])->middleware('auth');;
+Route::delete("saving/get/challenges/{id}/", [App\Http\Controllers\HasSavingTypeController::class, 'destroy'])->name('saving_challenge.destroy')->middleware('auth');;
 //view all selected saving types
 Route::get("saving/get/challenges/", [App\Http\Controllers\SavingController::class, 'index'])->middleware('auth');;
 //add savings to a saving type

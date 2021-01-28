@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center pt-3">
         @if (Session::has('message'))
-        <div class="col-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 text-whiten text-center">
+        <div class="col-6 col-md-6 col-lg-6 col-xs-12 col-sm-12 text-whiten text-center">
             <div class="alert alert-success alert-dismissible fade show">
                 <strong>{{ Session::get('message') }}</strong>
                 <button type="button" class="close" data-dismiss="alert">
@@ -14,6 +14,7 @@
         </div>
         @endif
     </div>
+
     <div class="row justify-content-center ">
         <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12 pl-3">
 
@@ -54,7 +55,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <form method="POST" action="/saving/get/challenges/{{$saving_challenge->id}}/">
+                                    <form method="POST" action="{{route('saving_challenge.destroy', $saving_challenge->id)}}">
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-outline-danger">
                                             <span><i class="nav-icon fas fa-trash"></i></span>
@@ -75,7 +76,7 @@
                     @endif
                     @if(count($saving_challenges) == 0)
                     <div class="row justify-content-center pt-3">
-                        <div class="col-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 text-center">
+                        <div class="col-6 col-md-6 col-lg-6 col-xs-12 col-sm-12 text-center">
                             <div class="alert alert-warning alert-dismissible fade show">
                                 <strong class="text-white">You don't have any Saving Challenge! select a Challenge</strong>
                                 <button type="button" class="close" data-dismiss="alert">
@@ -95,6 +96,7 @@
 
     </div>
 
+    <!-- Modal -->
 
 </div>
 
