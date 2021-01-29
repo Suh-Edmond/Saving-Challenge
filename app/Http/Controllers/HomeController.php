@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\AppController;
+use App\Models\ChallengeType;
 use Illuminate\Http\Request;
 use App\Models\SavingType;
 use Illuminate\Support\Facades\Auth;
@@ -33,15 +34,15 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-        if (SavingType::search()->get() == "[]") {
-            $saving_types = "Not Found";
-        } else if (SavingType::search()->get() != "[]") {
-            $saving_types =  SavingType::search()->paginate(5);
+        if (SavingType::search() == "Null") {
+            $saving_types = null;
+        } else if (SavingType::search() != "Null") {
+            $saving_types = SavingType::search()->select('id', 'challenge_type_id', 'number_of_weeks', 'amount_payable', 'total_amount')->paginate(5);
         }
         $challenges = $this->getSelectedChallenges()->count();
         $finish_challenges = $this->getFinishChallenges();
         $zero_challenges = $this->getZeroSavingChallenges();
-        //dd($saving_types);
+
         return view('home.home', compact("saving_types", "challenges", "finish_challenges", "zero_challenges"));
     }
 
@@ -90,9 +91,10 @@ class HomeController extends Controller
             $finish_challenges = DB::table('savings')
                 ->join('users', 'users.id', '=', 'savings.user_id')
                 ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
+                ->join('challenge_types', 'challenge_types.id', '=', 'saving_types.challenge_type_id')
                 ->where('users.id', '=', $user_id)
                 ->where('saving_types.id',  '=', $challenges[$i]->id)
-                ->select('saving_types.*', 'savings.*')
+                ->select('saving_types.*', 'savings.*', 'challenge_types.challenge_type')
                 ->orderBy('savings.id', 'DESC')->first();
             if ($finish_challenges != null) {
                 if ($finish_challenges->balance == $finish_challenges->total_amount) {
@@ -107,7 +109,7 @@ class HomeController extends Controller
     public function getDetailCompletedChallenges()
     {
         $completed = $this->DetailedCompletedChallenges();
-        // dd($completed);
+        //dd($completed);
         return view('home/completedChallenges', compact("completed"));
     }
     //get challenges with zero savings
@@ -130,7 +132,7 @@ class HomeController extends Controller
         return ($this->zero_challenges);
     }
     //get detail for zero saving challenges
-    private function  ZeroSavedCahallengesDetails()
+    private function  ZeroSavedChallengesDetails()
     {
         $user_id = Auth::user()->id;
         $challenges = $this->getSelectedChallenges();
@@ -144,7 +146,11 @@ class HomeController extends Controller
                 ->orderBy('savings.id', 'DESC')->first();
             if ($saving_challenge == null) {
                 //create a new variabele to hold the current challenge with zero savings
-                $zero_saving_challenge = DB::table('saving_types')->where('id', '=', $challenges[$i]->id)->select('*')->orderBy('created_at')->get();
+                $zero_saving_challenge = DB::table('saving_types')
+                    ->join('challenge_types', 'challenge_types.id', '=', 'saving_types.challenge_type_id')
+                    ->where('saving_types.id', '=', $challenges[$i]->id)
+                    ->select('*', 'challenge_types.challenge_type')
+                    ->get();
                 array_push($this->zero_saving_challenges, $zero_saving_challenge);
             } else {
                 continue;
@@ -158,10 +164,12 @@ class HomeController extends Controller
     public function ZeroSavedChallenges()
     {
         $types  = [];
-        $challenges = $this->ZeroSavedCahallengesDetails();
+        $challenges = $this->ZeroSavedChallengesDetails();
         for ($i = 0; $i < count($challenges); $i++) {
             $types = $challenges[$i];
         }
+
+        //dd($challenges[0]);
         return view('home.zeroChallenges', compact("types"));
     }
 }

@@ -43,7 +43,7 @@
                     @endif
                     <div class="row justify-content-center pt-3">
                         @if($completed == null)
-                        <div class="col-12 col-md-12 col-lg-12 col-xs-12 colsm-12 text-center text-white">
+                        <div class="col-6 col-md-6 col-lg-6 col-xs-12 colsm-12 text-center text-white">
                             <div class="alert alert-warning alert-dismissible fade show">
                                 <strong class="text-white">You don't have any Completed Saving Challenge!</strong>
                                 <button type="button" class="close" data-dismiss="alert">

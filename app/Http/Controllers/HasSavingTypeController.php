@@ -32,7 +32,7 @@ class HasSavingTypeController extends Controller
         $data = DB::table('has_saving_types')
             ->join('users', 'users.id', '=', 'has_saving_types.user_id')
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
-            ->where('saving_types.id', '=', $id)->select('has_saving_types.*')->delete();
+            ->where('has_saving_types.saving_type_id', '=', $id)->select('has_saving_types.*')->delete();
         // $deleted = $data->delete();
         $deleted = DB::table('savings')
             ->join('users', 'users.id', '=', 'savings.user_id')

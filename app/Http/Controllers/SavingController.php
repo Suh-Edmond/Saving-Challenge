@@ -19,8 +19,9 @@ class SavingController extends Controller
         $saving_challenges = DB::table('has_saving_types')
             ->join('users', 'users.id', '=', 'has_saving_types.user_id')
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
+            ->join('challenge_types', 'challenge_types.id', '=', 'saving_types.challenge_type_id')
             ->where('users.id', '=', $user_id)
-            ->select('saving_types.id', 'saving_types.challenge_type', 'saving_types.number_of_weeks', 'saving_types.total_amount')
+            ->select('saving_types.id', 'challenge_types.challenge_type', 'saving_types.number_of_weeks', 'saving_types.amount_payable', 'saving_types.total_amount')
             ->paginate(5);
         return view('saving.index', compact('saving_challenges'));
         //(($saving_challenges));
@@ -47,6 +48,7 @@ class SavingController extends Controller
     {
         $total_amount = SavingType::findOrFail($id)->total_amount;
         $total_balance = $this->totalBalance($id);
+        $total_week_number = SavingType::findOrFail($id)->number_of_weeks;
         $savings = DB::table('savings')
             ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
             ->join('users', 'users.id', '=', 'savings.user_id')
@@ -55,7 +57,7 @@ class SavingController extends Controller
             ->select('saving_types.id', 'savings.week_number', 'savings.amount_deposited', 'savings.status', 'savings.balance')
             ->paginate(5);
         //dd($savings);
-        return view('saving.show', compact('savings', 'id', 'total_amount', 'total_balance'));
+        return view('saving.show', compact('savings', 'id', 'total_amount', 'total_balance', 'total_week_number'));
     }
     //get the total amount deposited for a challenge
     private function totalBalance($challenge_id)
@@ -74,8 +76,9 @@ class SavingController extends Controller
     {
         $saving = request()->validate([
             'week_number' => 'required|numeric',
-            'amount_deposited' => 'required|numeric',
+            'amount_deposited' => 'numeric'
         ]);
+        // dd(request()->all());
         $current_balance = DB::table('has_saving_types')
             ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
             ->join('users', 'users.id', '=', 'has_saving_types.user_id')

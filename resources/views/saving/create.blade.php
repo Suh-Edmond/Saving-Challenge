@@ -8,7 +8,7 @@
         </div>
         <div class="col-6 col-md-6 col-xs-12 col-sm-12 pt-2">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-primary">
                     <h4 class="fw-bold text-center text-white">Deposite Saving</h5>
                 </div>
                 <div class="card-body">
@@ -39,10 +39,10 @@
                             </div>
                             <div class="col-12 col-sm-12 col-lg-12 col-xs-12">
                                 @if($last_saving == null)
-                                <input type="number" class="form-control" name="amount_deposited" required value="{{$amount_payable}}">
+                                <input type="number" class="form-control" name="amount_deposited" required value="{{$amount_payable}}" readonly>
                                 @endif
                                 @if($last_saving != null)
-                                <input type="number" class="form-control" name="amount_deposited" required value="{{$amount_payable + $last_saving->amount_deposited}}">
+                                <input type="number" class="form-control" name="amount_deposited" value="{{$amount_payable + $last_saving->amount_deposited}}" readonly>
                                 @endif
                             </div>
                             <div class="col-md-8 col-sm-12 col-xs-12">
@@ -62,8 +62,6 @@
     </div>
 </div>
 <style scoped>
-    .card-header {
-        background-color: blue;
-    }
+
 </style>
 @endsection

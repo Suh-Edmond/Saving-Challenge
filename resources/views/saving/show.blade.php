@@ -48,7 +48,12 @@
                                 @if($saving->status == 1)
                                 <td>Paid</td>
                                 @endif
+                                @if($total_balance != null && $total_balance->balance == $total_amount && $saving->week_number == $total_week_number)
+                                <td class="bg-secondary">{{$saving->balance}}</td>
+                                @endif
+                                @if($saving->week_number != $total_week_number)
                                 <td>{{$saving->balance}}</td>
+                                @endif
                             </tr>
 
                             @endforeach
@@ -63,7 +68,7 @@
                     @endif
                     @if(count($savings) == 0)
                     <div class="row justify-content-center pt-3">
-                        <div class="col-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 text-center">
+                        <div class="col-9 col-md-9 col-lg-9 col-xs-12 col-sm-12 text-center">
                             <div class="alert alert-warning alert-dismissible fade show">
                                 <strong class="text-white">You don't have any savings to this challenge! click the add saving button to make a saving</strong>
                                 <button type="button" class="close" data-dismiss="alert">
