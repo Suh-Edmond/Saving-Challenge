@@ -37,9 +37,13 @@
         <nav class="navbar navbar-expand-md  bg-primary bg-gradient ">
             <div class="container">
                 <div>
-                    <h6 class="navbar-brand  text-white " style="font-weight: bolder; font-size:larger">
+                    <h2 class="navbar-brand  text-white header">
                         {{ config('app.name', 'Saving Challenge') }}
-                    </h6>
+                    </h2>
+
+                    <button class="navbar-toggler hide_btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -74,8 +78,11 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- ./wrapper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <!-- jQuery -->
-    <script src="{{ asset('plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/app.js')}}"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -85,19 +92,19 @@
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- ChartJS -->
-    <script src="plugins/chart.js/Chart.min.js')}}"></script>
+    <!-- <script src="plugins/chart.js/Chart.min.js')}}"></script> -->
     <!-- Sparkline -->
     <script src="{{ asset('plugins/sparklines/sparkline.js')}}"></script>
     <!-- JQVMap -->
-    <script src="plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+    <!-- <script src="plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script> -->
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js')}}"></script>
     <!-- daterangepicker -->
-    <script src="plugins/moment/moment.min.js')}}"></script>
-    <script src="plugins/daterangepicker/daterangepicker.js')}}"></script>
+    <!-- <script src="plugins/moment/moment.min.js')}}"></script>
+    <script src="plugins/daterangepicker/daterangepicker.js')}}"></script>  -->
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+    <!-- <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script> -->
     <!-- Summernote -->
     <script src="{{ asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
     <!-- overlayScrollbars -->
@@ -111,3 +118,19 @@
 </body>
 
 </html>
+<style scoped>
+    .header {
+        font-size: 21px;
+        font-weight: bolder;
+        margin-right: 238px;
+    }
+
+    .btn {
+        width: 11rem;
+    }
+
+    .hide_btn {
+        color: white;
+
+    }
+</style>

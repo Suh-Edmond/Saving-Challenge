@@ -46,7 +46,8 @@ class SavingNotification extends Notification
             ->from('suhedmond25@yahoo.com', 'Saving Challenge')
             ->greeting($this->saving_notification['name'])
             ->line($this->saving_notification['body'])
-            ->action('Login to make Saving', $url)
+
+            ->action('Login to make Saving', "localhost:8000")
             ->line('Thank you for using our application!');
     }
 
@@ -58,6 +59,6 @@ class SavingNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        return [];
+        return 0;
     }
 }

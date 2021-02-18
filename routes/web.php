@@ -40,11 +40,11 @@ Route::get("challenges/zero_challenges", [App\Http\Controllers\HomeController::c
 Auth::routes();
 //home route
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-//route for email notification
-Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'sendNotification'])->middleware('auth');
 //route to show a user
 Route::get('/user/profile/{id}', [App\Http\Controllers\UserController::class, 'show'])->middleware('auth');
 //route for edit form for user details
 Route::get('/user/profile/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->middleware('auth');
 //route to update user details
 Route::put('/user/profile/{id}', [App\Http\Controllers\UserController::class, 'update'])->middleware('auth');
+
+Route::get('/test', [App\Http\Controllers\AppController::class, 'getNotifyData']);

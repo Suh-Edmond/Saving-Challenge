@@ -82,8 +82,8 @@
         <div class="container">
             <div class="row justify-content-center pt-3">
                 @if (Session::has('message'))
-                <div class="col-6 col-md-6 col-lg-6 col-xs-12 col-sm-12  col-xl-6 text-center text-white">
-                    <div class="alert alert-success alert-dismissible fade show">
+                <div class="  col-sm-6    text-center text-white">
+                    <div class="alert alert-info alert-dismissible fade show">
                         <strong>{{ Session::get('message') }}</strong>
                         <a href="/saving/get/challenges/" class="alert-link "> View Challenges</a>
                         <button type="button" class="close" data-dismiss="alert">
@@ -94,7 +94,7 @@
                 @endif
             </div>
             <div class="row justify-content-center">
-                <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12">
+                <div class=" col-sm-12  col-xl-12">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between pt-3">
@@ -137,13 +137,16 @@
                             <div class="row justify-content-center pt-3">
                                 @if($saving_types != null)
                                 <div>
-                                    {{$saving_types->links('pagination::bootstrap-4')}}
+                                    <!-- {{$saving_types->links('pagination::bootstrap-4')}} -->
+
+                                    <p class="text-primary"> {{ $saving_types->firstItem() }} to {{ $saving_types->lastItem() }} entries of total {{$saving_types->total()}} entries</p>
+
                                 </div>
                                 @endif
                             </div>
                             @if($saving_types == null)
                             <div class="row d-flex justify-content-center">
-                                <div class="col-6 col-md-6 col-lg-6 col-xs-12 col-sm-12 text-white text-center">
+                                <div class="col-sm-6 text-white text-center">
                                     <div class="alert alert-info alert-dismissible   show">
                                         <strong class="text-white">Searched Challenge Not Found</strong>
                                         <button type="button" class="close" data-dismiss="alert">

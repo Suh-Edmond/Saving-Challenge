@@ -41,5 +41,9 @@ class ChallengeTypeSeeder extends Seeder
             "challenge_type" => "3000 Start Challenge",
             "description" => "This is a 3000Frs Start Challenge",
         ]);
+        DB::table("challenge_types")->insert([
+            "challenge_type" => "1500 Start Challenge",
+            "description" => "This is a 1500Frs Start Challenge",
+        ]);
     }
 }

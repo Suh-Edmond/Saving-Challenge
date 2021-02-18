@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\SavingNotification;
+use App\Console\Commands\showNotificationData;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +16,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        SavingNotification::class
+        SavingNotification::class,
+        showNotificationData::class
     ];
 
 
@@ -27,7 +29,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('notification:user')->weekly();
+        $schedule->command('notification:users')->weekly();
     }
 
 

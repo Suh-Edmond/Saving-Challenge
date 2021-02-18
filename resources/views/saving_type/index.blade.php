@@ -20,7 +20,7 @@
 
             <a href="{{ URL::previous() }}"><i class="fas fa-arrow-left fa-lg"></i></a>
         </div>
-        <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 pt-3">
+        <div class="col-sm-12 pt-3">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between pt-3">
@@ -64,7 +64,7 @@
                         @if($saving_types != null)
                         <div>
                             {{$saving_types->links('pagination::bootstrap-4')}}
-
+                            <p class="text-primary"> {{ $saving_types->firstItem() }} to {{ $saving_types->lastItem() }} entries of total {{$saving_types->total()}} entries</p>
                         </div>
                         @endif
                     </div>

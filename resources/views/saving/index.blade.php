@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center pt-3">
         @if (Session::has('message'))
-        <div class="col-6 col-md-6 col-lg-6 col-xs-12 col-sm-12 text-whiten text-center">
+        <div class=" col-sm-6 text-white text-center">
             <div class="alert alert-success alert-dismissible fade show">
                 <strong>{{ Session::get('message') }}</strong>
                 <button type="button" class="close" data-dismiss="alert">
@@ -70,13 +70,13 @@
                     <div class="row justify-content-center pt-3">
                         <div>
                             {{$saving_challenges->links('pagination::bootstrap-4')}}
-
+                            <p class="text-primary"> {{ $saving_challenges->firstItem() }} to {{ $saving_challenges->lastItem() }} entries of total {{$saving_challenges->total()}} entries</p>
                         </div>
                     </div>
                     @endif
                     @if(count($saving_challenges) == 0)
                     <div class="row justify-content-center pt-3">
-                        <div class="col-6 col-md-6 col-lg-6 col-xs-12 col-sm-12 text-center">
+                        <div class="col-sm-6 text-center">
                             <div class="alert alert-warning alert-dismissible fade show">
                                 <strong class="text-white">You don't have any Saving Challenge! select a Challenge</strong>
                                 <button type="button" class="close" data-dismiss="alert">
@@ -86,9 +86,7 @@
                         </div>
                     </div>
                     @endif
-                    <!-- <div class="pt-2 fw-normal">
-                        <label>Total Number of Selected Saving Challenges: {{count($saving_challenges)}}</label>
-                    </div> -->
+
 
                 </div>
             </div>
