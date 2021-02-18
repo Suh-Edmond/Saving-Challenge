@@ -34,10 +34,10 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <div id="app">
-        <nav class="navbar navbar-expand-md  bg-primary bg-gradient ">
+        <nav class="navbar navbar-expand-md    ">
             <div class="container">
                 <div>
-                    <h2 class="navbar-brand  text-white header">
+                    <h2 class="navbar-brand  text-dark header">
                         {{ config('app.name', 'Saving Challenge') }}
                     </h2>
 
@@ -57,13 +57,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item ">
-                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
