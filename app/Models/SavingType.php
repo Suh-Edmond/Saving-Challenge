@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ChallengeType;
 
 class SavingType extends Model
 {
@@ -29,13 +30,13 @@ class SavingType extends Model
     //search challenge type
     public function scopeSearch($query)
     {
-        $errormsg = "Null";
-        //  return  $query->where('challenge_type', 'LIKE', '%' . request()->challenge_type . '%');
-        if (request()->challenge_type != null) {
-            $type = ChallengeType::where('challenge_type', 'LIKE', '%' . request()->challenge_type)->pluck('id');
+
+        $Notfound = "Null";
+        if (!empty(request()->challenge_type)) {
+            $type = ChallengeType::where('challenge_type', 'LIKE', request()->challenge_type . '%')->pluck('id');
             if ($type == "[]") {
-                return $errormsg;
-            } else if ($type != "[]") {
+                return $Notfound;
+            } else {
                 return $query->where('challenge_type_id', '=', $type);
             }
         }

@@ -18,12 +18,15 @@ class HomeController extends Controller
      */
     private $completed_challenges = 0; // to hold the number of completed challenges
     private $zero_challenges = 0; //to hold the number of zero saving challenges
-    public $finish_challenges = []; //to hold all finished challenges
-    private $zero_saving_challenges = []; //to hold the details for all zero saving challenges
+    private $zero_challenges_id; //array to hold the id's of all zero saved challenges
+    private $completed_challenges_id; //array to hold the id's of all completed saved challenges
+
+
     public function __construct()
     {
         $this->middleware('auth');
-        //  $this->notify = new AppController();
+        $this->zero_challenges_id = [];
+        $this->completed_challenges_id = [];
     }
 
     /**
@@ -33,16 +36,15 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
         if (SavingType::search() == "Null") {
             $saving_types = null;
-        } else if (SavingType::search() != "Null") {
+        } else {
             $saving_types = SavingType::search()->select('id', 'challenge_type_id', 'number_of_weeks', 'amount_payable', 'total_amount')->paginate(5);
         }
         $challenges = $this->getSelectedChallenges()->count();
         $finish_challenges = $this->getFinishChallenges();
         $zero_challenges = $this->getZeroSavingChallenges();
-
+        //dd($saving_types);
         return view('home.home', compact("saving_types", "challenges", "finish_challenges", "zero_challenges"));
     }
 
@@ -75,42 +77,29 @@ class HomeController extends Controller
             if ($finish_challenges != null) {
                 if ($finish_challenges->balance == $finish_challenges->total_amount) {
                     $this->completed_challenges += 1;
-                } else {
-                    $this->completed_challenges += 0;
+                    array_push($this->completed_challenges_id, $challenges[$i]);
                 }
             }
         }
         return ($this->completed_challenges);
     }
     //get details of finished challeneges
-    private function DetailedCompletedChallenges()
-    {
-        $user_id = Auth::user()->id;
-        $challenges = $this->getSelectedChallenges();
-        for ($i = 0; $i <  count($challenges); $i++) {
-            $finish_challenges = DB::table('savings')
-                ->join('users', 'users.id', '=', 'savings.user_id')
-                ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
-                ->join('challenge_types', 'challenge_types.id', '=', 'saving_types.challenge_type_id')
-                ->where('users.id', '=', $user_id)
-                ->where('saving_types.id',  '=', $challenges[$i]->id)
-                ->select('saving_types.*', 'savings.*', 'challenge_types.challenge_type')
-                ->orderBy('savings.id', 'DESC')->first();
-            if ($finish_challenges != null) {
-                if ($finish_challenges->balance == $finish_challenges->total_amount) {
-                    array_push($this->finish_challenges, $finish_challenges);
-                } else {
-                    continue;
-                }
-            }
-        }
-        return ($this->finish_challenges);
-    }
     public function getDetailCompletedChallenges()
     {
-        $completed = $this->DetailedCompletedChallenges();
-        //dd($completed);
-        return view('home/completedChallenges', compact("completed"));
+        $completedChallenge = []; //array to hold the details of all completed challenges
+        $this->getFinishChallenges(); //call to method getfinishechallenges to return an array of id's for all finishe challenges
+
+        for ($i = 0; $i < count($this->completed_challenges_id); $i++) {
+            $details = DB::table('saving_types')
+                ->join('challenge_types', 'challenge_types.id', '=', 'saving_types.id')
+                ->join('savings', 'saving_types.id', '=', 'savings.saving_type_id')
+                ->where('challenge_types.id', '=', $this->completed_challenges_id[$i]->id)
+                ->select('challenge_type', 'number_of_weeks', 'amount_payable', 'balance', 'total_amount',)
+                ->orderBy('savings.created_at', 'DESC')->get();
+            array_push($completedChallenge, $details[0]);
+        }
+
+        return view('home/completedChallenges', compact("completedChallenge"));
     }
     //get challenges with zero savings
     private function getZeroSavingChallenges()
@@ -124,52 +113,28 @@ class HomeController extends Controller
                 ->where('users.id', '=', $user_id)
                 ->where('saving_types.id',  '=', $challenges[$i]->id)
                 ->select('savings.balance')
-                ->orderBy('savings.id', 'DESC')->first();
+                ->orderBy('savings.created_at', 'DESC')->first();
             if ($saving == null) {
                 $this->zero_challenges += 1;
+                array_push($this->zero_challenges_id, $challenges[$i]);
             }
         }
+
         return ($this->zero_challenges);
     }
-    //get detail for zero saving challenges
-    private function  ZeroSavedChallengesDetails()
-    {
-        $user_id = Auth::user()->id;
-        $challenges = $this->getSelectedChallenges();
-        for ($i = 0; $i <  count($challenges); $i++) {
-            $saving_challenge = DB::table('savings')
-                ->join('users', 'users.id', '=', 'savings.user_id')
-                ->join('saving_types', 'saving_types.id', '=', 'savings.saving_type_id')
-                ->where('users.id', '=', $user_id)
-                ->where('saving_types.id',  '=', $challenges[$i]->id)
-                ->select('saving_types.*')
-                ->orderBy('savings.id', 'DESC')->first();
-            if ($saving_challenge == null) {
-                //create a new variabele to hold the current challenge with zero savings
-                $zero_saving_challenge = DB::table('saving_types')
-                    ->join('challenge_types', 'challenge_types.id', '=', 'saving_types.challenge_type_id')
-                    ->where('saving_types.id', '=', $challenges[$i]->id)
-                    ->select('*', 'challenge_types.challenge_type')
-                    ->get();
-                array_push($this->zero_saving_challenges, $zero_saving_challenge);
-            } else {
-                continue;
-            }
-        }
-        // $zero_saving_challenges = $this->zero_saving_challenges;
-        //dd($this->zero_saving_challenges);
-        return $this->zero_saving_challenges;
-    }
+
     //get the zero saving challenges
     public function ZeroSavedChallenges()
     {
         $types  = [];
-        $challenges = $this->ZeroSavedChallengesDetails();
-        for ($i = 0; $i < count($challenges); $i++) {
-            $types = $challenges[$i];
+        $this->getZeroSavingChallenges(); //call to method get zero saved challenges so as retrive all their id's
+        for ($i = 0; $i < count($this->zero_challenges_id); $i++) {
+            $details = DB::table('saving_types')
+                ->join('challenge_types', 'challenge_types.id', '=', 'saving_types.id')
+                ->where('challenge_types.id', '=', $this->zero_challenges_id[$i]->id)
+                ->select('challenge_type', 'number_of_weeks', 'amount_payable', 'total_amount')->get();
+            array_push($types, $details[0]);
         }
-
-        //dd($challenges[0]);
         return view('home.zeroChallenges', compact("types"));
     }
 }

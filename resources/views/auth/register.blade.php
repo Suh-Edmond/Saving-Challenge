@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12">
+        <div class="  col-sm-6">
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    <div class="text-center  title">
-                        <h5>{{ __('Create Account') }}</h5>
+                    <div class="text-center" style="font-family: Arial, Helvetica, sans-serif;">
+                        <h4>{{ __('Create Account') }}</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -62,13 +62,8 @@
                             <label for="password-confirm" class="form-label">Confirm Password</label>
                             <input type="password" id="password-confirm" class="form-control" name="password_confirmation" required>
                         </div>
-
-                        <div class=" pt-3 row d-flex justify-content-center">
-                            <div>
-                                <button type="submit" class="btn btn-primary custom-btn">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
+                        <div class=" d-flex justify-content-center pt-4">
+                            <button type="submit" class="btn btn-primary button "> {{ __('Register') }}</button>
                         </div>
                     </form>
                 </div>
@@ -76,18 +71,5 @@
         </div>
     </div>
 </div>
-<style scoped>
-    .title {
-        font-family: Arial, Helvetica, sans-serif;
-    }
 
-
-    .fw-small {
-        width: 0.8rem;
-    }
-
-    .btn {
-        width: 11rem;
-    }
-</style>
 @endsection

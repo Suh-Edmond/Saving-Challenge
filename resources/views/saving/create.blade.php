@@ -2,11 +2,13 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center pt-3">
+    <div class="row pt-3">
         <div class="col-12 col-md-12 col-sm-12 col-xs-12 col-xl-12 col-lg-12 pl-3">
             <a href="{{ URL::previous() }}"><i class="fas fa-arrow-left fa-lg"></i></a>
         </div>
-        <div class="col-6 col-md-6 col-xs-12 col-sm-12 pt-2">
+    </div>
+    <div class="row justify-content-center pt-5">
+        <div class="col-sm-6">
             <div class="card">
                 <div class="card-header bg-primary">
                     <h4 class="fw-bold text-center text-white">Deposite Saving</h5>
@@ -51,8 +53,8 @@
                                 </span>
                             </div>
                         </div>
-                        <div class=" pt-2 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary">Save Saving</button>
+                        <div class=" pt-4 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary" style="width: 11rem;">Save Saving</button>
                         </div>
                         @csrf
                     </form>
@@ -61,7 +63,4 @@
         </div>
     </div>
 </div>
-<style scoped>
-
-</style>
 @endsection

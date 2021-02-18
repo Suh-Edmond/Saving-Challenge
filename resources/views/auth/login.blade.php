@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center pt-3">
-        <div class="col-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="  col-sm-6 col-xs-12">
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    <div class="text-center  title ">
+                    <div class="text-center ">
                         <h4>{{ __('Login to your Account') }}</h4>
                     </div>
                 </div>
@@ -35,12 +35,8 @@
                                 {{ $errors->first('password') }}
                             </span>
                         </div>
-                        <div class="form-group row mb-0  pb-2 d-flex  justify-content-center">
-                            <div class=" ">
-                                <button type="submit" class="btn btn-primary custom-btn">
-                                    {{ __('Login') }}
-                                </button>
-                            </div>
+                        <div class=" d-flex justify-content-center pt-4">
+                            <button type="submit" class="btn btn-primary button "> {{ __('Login') }}</button>
                         </div>
                     </form>
                 </div>
@@ -48,19 +44,5 @@
         </div>
     </div>
 </div>
-<style scoped>
-    .title {
-        font-family: Arial, Helvetica, sans-serif;
-    }
 
-
-
-    .fw-small {
-        width: 0.7rem;
-    }
-
-    .btn {
-        width: 11rem;
-    }
-</style>
 @endsection

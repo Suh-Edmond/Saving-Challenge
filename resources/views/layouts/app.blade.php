@@ -34,7 +34,6 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -43,7 +42,7 @@
                     <a class="nav-link" data-widget="pushmenu" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a class="nav-link">Home</a>
+                    <a href="/home" class="nav-link">Home</a>
                 </li>
 
             </ul>
@@ -64,16 +63,31 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fas fa-bell fa-lg"></i>
                         @if(Auth::user()->notifications->pluck('notifiable_id')->count() !=0)
-                        <span class="badge badge-danger navbar-badge" style="font-size: 1rem;">
+                        <span class="badge badge-danger navbar-badge" style="font-size: 0.8rem;">
                             {{Auth::user()->notifications->pluck('notifiable_id')->count()}}
                         </span>
                         @endif
                     </a>
-                </li>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        @if(Auth::user()->notifications->pluck('notifiable_id')->count() !=0)
+                        <span class="dropdown-item dropdown-header">
+                            {{Auth::user()->notifications->pluck('notifiable_id')->count()}} Saving Challenge Notifications
+                        </span>
+                        @endif
+                        @if(Auth::user()->notifications->pluck('notifiable_id')->count() !=0)
+                        <div class="dropdown-divider"></div>
+                        <a href="https://{{Auth::user()->email}}" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i>View Notifications
+                            <span class="float-right text-muted text-sm"></span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        @endif
 
+                    </div>
+                </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -186,9 +200,8 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <!-- jQuery -->
-
     <script src="{{ asset('js/app.js')}}"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
@@ -199,19 +212,19 @@
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- ChartJS -->
-    <script src="plugins/chart.js/Chart.min.js')}}"></script>
+    <!-- <script src="plugins/chart.js/Chart.min.js')}}"></script> -->
     <!-- Sparkline -->
     <script src="{{ asset('plugins/sparklines/sparkline.js')}}"></script>
     <!-- JQVMap -->
-    <script src="plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+    <!-- <script src="plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script> -->
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js')}}"></script>
     <!-- daterangepicker -->
-    <script src="plugins/moment/moment.min.js')}}"></script>
-    <script src="plugins/daterangepicker/daterangepicker.js')}}"></script>
+    <!-- <script src="plugins/moment/moment.min.js')}}"></script>
+    <script src="plugins/daterangepicker/daterangepicker.js')}}"></script>  -->
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+    <!-- <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script> -->
     <!-- Summernote -->
     <script src="{{ asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
     <!-- overlayScrollbars -->
