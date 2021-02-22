@@ -25,8 +25,8 @@ class UserController extends Controller
         $data = request()->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
-            'telephone' => 'required'
+            'email' => 'required|email',
+            'telephone' => 'required|numeric'
         ]);
         $updated = User::findOrFail($id)->update($data);
         return redirect('/user/profile/' . $id);

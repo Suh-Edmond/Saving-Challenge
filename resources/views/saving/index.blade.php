@@ -76,7 +76,7 @@
                     @endif
                     @if(count($saving_challenges) == 0)
                     <div class="row justify-content-center pt-3">
-                        <div class="col-sm-6 text-center">
+                        <div class="col-sm-8 text-center">
                             <div class="alert alert-warning alert-dismissible fade show">
                                 <strong class="text-white">You don't have any Saving Challenge! select a Challenge</strong>
                                 <button type="button" class="close" data-dismiss="alert">

@@ -5,7 +5,7 @@
     <div class="row justify-content-center pt-3">
         <div class="  col-sm-6 col-xs-12">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header  text-dark">
                     <div class="text-center ">
                         <h4>{{ __('Login to your Account') }}</h4>
                     </div>
@@ -36,7 +36,7 @@
                             </span>
                         </div>
                         <div class=" d-flex justify-content-center pt-4">
-                            <button type="submit" class="btn btn-primary button "> {{ __('Login') }}</button>
+                            <button type="submit" class="btn btn-outline-primary button "> {{ __('Login') }}</button>
                         </div>
                     </form>
                 </div>

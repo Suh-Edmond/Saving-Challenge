@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row d-flex justify-content-center pt-4">
 
-        <div class="card  " style="width: 40rem;">
+        <div class="card" style="width: 40rem;">
             <div class="d-flex justify-content-center pt-1">
                 <avatar size="100px">
                     <img src="{{asset('/dist/img/user.png')}}" style="width: 100px; height: 100px" />
@@ -55,7 +55,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" style="width: 11rem;">
                                 Save Profile
                             </button>
                         </div>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="  col-sm-6">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header  text-dark">
                     <div class="text-center" style="font-family: Arial, Helvetica, sans-serif;">
                         <h4>{{ __('Create Account') }}</h4>
                     </div>
@@ -63,7 +63,7 @@
                             <input type="password" id="password-confirm" class="form-control" name="password_confirmation" required>
                         </div>
                         <div class=" d-flex justify-content-center pt-4">
-                            <button type="submit" class="btn btn-primary button "> {{ __('Register') }}</button>
+                            <button type="submit" class="btn btn-outline-primary button "> {{ __('Register') }}</button>
                         </div>
                     </form>
                 </div>
