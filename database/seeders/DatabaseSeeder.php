@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call(ChallengeTypeSeeder::class);
+        $this->call(SavingTypeSeeder::class);
     }
 }
