@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('notification:users')->weekly();
+        $schedule->command('notification:users')->everyFiveMinutes();
     }
 
 
