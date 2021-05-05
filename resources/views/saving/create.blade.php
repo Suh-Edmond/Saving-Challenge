@@ -14,7 +14,7 @@
                     <h4 class="fw-bold text-center text-white">Deposite Saving</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form" method="POST" action="/saving/get/challenges/{{$id}}/">
+                    <form class="form" method="POST" action="{{route('challenges_store_saving', $id)}}">
                         <div class="form-group row rounded-border pb-1">
                             <div class=" col-12 col-sm-12 col-lg-12 col-xs-12  ">
                                 <h6 class="fw-normal"> Week Number </h6>

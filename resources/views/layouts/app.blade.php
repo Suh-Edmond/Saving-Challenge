@@ -123,7 +123,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="/saving/get/challenges/" class="nav-link">
+                            <a href="{{route('challenges_get_challenges')}}" class="nav-link">
                                 <i class="nav-icon fas fa-money-check"></i>
                                 <p>
                                     My Saving Challenges

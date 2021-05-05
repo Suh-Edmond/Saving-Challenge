@@ -7,7 +7,7 @@
         <div class="col-6 col-md-6 col-lg-6 col-xs-12 colsm-12 text-center text-white">
             <div class="alert alert-success alert-dismissible fade show">
                 <strong>{{ Session::get('message') }}</strong>
-                <a href="/saving/get/challenges/" class="alert-link "> View Challenges</a>
+                <a href="{{route('challenges_get_challenges')}}" class="alert-link "> View Challenges</a>
                 <button type="button" class="close" data-dismiss="alert">
                     <span>&times;</span>
                 </button>
@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between pt-3">
                         <p class="text-primary h3">Saving Challenges</p>
-                        <p><a class="btn btn-outline-primary" href="/saving/challenges/create" role="button">Create Challenge</a></p>
+                        <p><a class="btn btn-outline-primary" href="{{route('challenges_create')}}" role="button">Create Challenge</a></p>
                     </div>
 
                 </div>
@@ -50,7 +50,7 @@
                                 <td>{{$saving_type->number_of_weeks}}</td>
                                 <td>{{$saving_type->total_amount}}</td>
                                 <td>
-                                    <form method="POST" action="/saving/challenges/{{$saving_type->id}}/">
+                                    <form method="POST" action="{{route('challenges_add_challenge', $saving_type->id)}}">
                                         <button class="btn btn-outline-primary">Select Challenge</button>
                                         @csrf
                                     </form>
@@ -64,7 +64,7 @@
                         @if($saving_types != null)
                         <div>
                             {{$saving_types->links('pagination::bootstrap-4')}}
-                            <p class="text-primary"> {{ $saving_types->firstItem() }} to {{ $saving_types->lastItem() }} entries of total {{$saving_types->total()}} entries</p>
+                            <p class=" text-primary"> {{ $saving_types->firstItem() }} to {{ $saving_types->lastItem() }} entries of total {{$saving_types->total()}} entries</p>
                         </div>
                         @endif
                     </div>

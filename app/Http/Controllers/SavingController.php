@@ -105,7 +105,7 @@ class SavingController extends Controller
                 'user_id' => Auth::user()->id
             ]);
         }
-        return redirect("saving/get/challenges/" . $id);
+        return redirect()->route('challenges_show', $id);
         //dd($current_balance);
     }
 }

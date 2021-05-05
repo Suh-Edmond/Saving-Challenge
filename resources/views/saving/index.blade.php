@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between pt-3">
                         <p class=" text-primary h3">My Saving Challenges</p>
-                        <p><a class="btn btn-outline-primary" href="/saving/challenges" role="button">Add Saving Challenge</a></p>
+                        <p><a class="btn btn-outline-primary" href="{{route('challenges')}}" role="button">Add Saving Challenge</a></p>
                     </div>
 
                 </div>
@@ -50,12 +50,12 @@
                                 <td>{{$saving_challenge->number_of_weeks}}</td>
                                 <td>{{$saving_challenge->total_amount}}</td>
                                 <td>
-                                    <a class="btn btn-outline-info" href="/saving/get/challenges/{{$saving_challenge->id}}/" role="button">
+                                    <a class="btn btn-outline-info" href="{{route('challenges_show', $saving_challenge->id)}}" role="button">
                                         <span><i class="nav-icon fas fa-info-circle"></i></span>
                                     </a>
                                 </td>
                                 <td>
-                                    <form method="POST" action="{{route('saving_challenge.destroy', $saving_challenge->id)}}">
+                                    <form method="POST" action="{{route('challenges_destroy', $saving_challenge->id)}}">
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-outline-danger">
                                             <span><i class="nav-icon fas fa-trash"></i></span>

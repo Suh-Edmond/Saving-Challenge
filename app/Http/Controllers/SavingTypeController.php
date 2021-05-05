@@ -39,7 +39,7 @@ class SavingTypeController extends Controller
         ]);
 
         SavingType::create($data);
-        return redirect('/saving/challenges');
+        return redirect()->route('challenges');
     }
 
 

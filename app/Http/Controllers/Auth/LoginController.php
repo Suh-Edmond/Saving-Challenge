@@ -47,6 +47,6 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, User $user)
     {
-        event(new UserHasLogin($user));
+        //event(new UserHasLogin($user));
     }
 }

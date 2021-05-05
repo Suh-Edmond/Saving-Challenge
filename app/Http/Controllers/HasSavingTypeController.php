@@ -42,6 +42,6 @@ class HasSavingTypeController extends Controller
             ->select('savings.*');
         $deleted->delete();
         Session::flash('message', "Saving Challenge has been deleted successfully");
-        return redirect("/saving/get/challenges/");
+        return redirect("/saving/challenges/selected/");
     }
 }

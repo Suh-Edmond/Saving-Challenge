@@ -29,7 +29,7 @@
                     <!-- <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div> -->
-                    <a href="/saving/get/challenges" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('challenges_get_challenges')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -44,7 +44,7 @@
                     <!-- <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div> -->
-                    <a href="/challenges/completed_challenges" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('challenges_complete')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -74,7 +74,7 @@
                     <!-- <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                     </div> -->
-                    <a href="/challenges/zero_challenges" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('challenges_zero')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -85,7 +85,7 @@
                 <div class="  col-sm-6    text-center text-white">
                     <div class="alert alert-info alert-dismissible fade show">
                         <strong>{{ Session::get('message') }}</strong>
-                        <a href="/saving/get/challenges/" class="alert-link "> View Challenges</a>
+                        <a href="{{route('challenges_get_challenges')}}" class="alert-link "> View Challenges</a>
                         <button type="button" class="close" data-dismiss="alert">
                             <span>&times;</span>
                         </button>
@@ -99,7 +99,7 @@
                         <div class="card-header">
                             <div class="d-flex justify-content-between pt-3">
                                 <p class="text-primary h3">Saving Challenges</p>
-                                <p><a class="btn btn-outline-primary" href="/saving/challenges/create" role="button">Create Challenge</a></p>
+                                <p><a class="btn btn-outline-primary" href="{{route('challenges_create')}}" role="button">Create Challenge</a></p>
                             </div>
 
                         </div>
@@ -124,7 +124,7 @@
                                         <td>{{$saving_type->number_of_weeks}}</td>
                                         <td>{{$saving_type->total_amount}}</td>
                                         <td>
-                                            <form method="POST" action="/saving/challenges/{{$saving_type->id}}/">
+                                            <form method="POST" action="{{route('challenges_add_challenge', $saving_type->id)}}/">
                                                 <button class="btn btn-outline-primary">Select Challenge</button>
                                                 @csrf
                                             </form>
@@ -137,7 +137,6 @@
                             <div class="row justify-content-center pt-3">
                                 @if($saving_types != null)
                                 <div>
-                                    <!-- {{$saving_types->links('pagination::bootstrap-4')}} -->
 
                                     <p class="text-primary"> {{ $saving_types->firstItem() }} to {{ $saving_types->lastItem() }} entries of total {{$saving_types->total()}} entries</p>
 

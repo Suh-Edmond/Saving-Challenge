@@ -14,7 +14,7 @@
                     <h4 class="fw-bold text-center text-white">Create Saving Challenge</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form" method="POST" action="/saving/challenges">
+                    <form class="form" method="POST" action="{{route('challenges_store')}}">
                         <div class="row rounded-border   pb-2">
                             <div class="col-12 col-sm-12 col-lg-12 col-xs-12 h6 fw-normal ">
                                 Challenge Type

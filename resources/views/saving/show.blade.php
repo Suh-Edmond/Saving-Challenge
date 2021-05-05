@@ -22,7 +22,7 @@
                         <div class=" text-primary h3">My Savings </div>
                         @if($total_balance == null || $total_balance->balance != $total_amount)
                         <div>
-                            <a class="btn btn-outline-primary" href="/saving/get/challenges/{{$id}}/add" role="button">
+                            <a class="btn btn-outline-primary" href="{{route('challenges_create_saving', $id)}}" role="button">
                                 Add Saving
                             </a>
                         </div>
