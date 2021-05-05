@@ -124,7 +124,7 @@
                                         <td>{{$saving_type->number_of_weeks}}</td>
                                         <td>{{$saving_type->total_amount}}</td>
                                         <td>
-                                            <form method="POST" action="{{route('challenges_add_challenge', $saving_type->id)}}/">
+                                            <form method="GET" action="{{route('challenges_add_challenge', $saving_type->id)}}/">
                                                 <button class="btn btn-outline-primary">Select Challenge</button>
                                                 @csrf
                                             </form>

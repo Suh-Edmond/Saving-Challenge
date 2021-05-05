@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
     //store a new saving challenge challenge
     Route::post("/saving/challenges", [App\Http\Controllers\SavingTypeController::class, 'store'])->name('challenges_store');
     //add a saving type to my selected saving challenge
-    Route::post("/saving/challenges/selected/{id}", [App\Http\Controllers\HasSavingTypeController::class, 'store'])->name('challenges_add_challenge');
+    Route::get("/saving/challenges/selected/{id}", [App\Http\Controllers\HasSavingTypeController::class, 'store'])->name('challenges_add_challenge');
     //view all selected saving challenge
     Route::get("/saving/challenges/selected", [App\Http\Controllers\SavingController::class, 'index'])->name('challenges_get_challenges');
     //add savings to a saving challenge
