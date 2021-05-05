@@ -11,6 +11,7 @@ class SavingNotification extends Notification
 {
     use Queueable;
     private  $saving_notification;
+    private $url = "http://localhost:8000";
 
     /**
      * Create a new notification instance.
@@ -43,10 +44,10 @@ class SavingNotification extends Notification
     {
 
         return (new MailMessage)
-            ->from('http://info@contripipo.com', 'Saving Challenge')
+            ->from('example@gmail.com', 'Saving Challenge')
             ->greeting($this->saving_notification['name'])
             ->line($this->saving_notification['body'])
-            ->action('Login to make Saving', "http://info@contripipo.com")
+            ->action('Login to make Saving', url($this->url))
             ->line('Thank you for using our application!');
     }
 
