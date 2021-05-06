@@ -20,13 +20,7 @@ class CreateSavingsTable extends Migration
             $table->string("amount_deposited");
             $table->string("status")->default(0);
             $table->string("balance");
-            $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("saving_type_id");
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
             $table->foreign('saving_type_id')
                 ->references('id')
                 ->on('saving_types')
