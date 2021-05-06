@@ -78,33 +78,34 @@ class SavingController extends Controller
             'week_number' => 'required|numeric',
             'amount_deposited' => 'numeric'
         ]);
+        dd($saving);
         // dd(request()->all());
-        $current_balance = DB::table('has_saving_types')
-            ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
-            ->join('users', 'users.id', '=', 'has_saving_types.user_id')
-            ->join('savings', 'saving_types.id', '=', 'savings.saving_type_id')
-            ->where('users.id', '=', Auth::user()->id)
-            ->where('saving_types.id', '=', $id)
-            ->select('savings.balance')->orderBy('savings.id', 'DESC')->get()->first();
-        if ($current_balance != null) {
-            $created = Saving::insert([
-                'week_number' => $saving['week_number'],
-                'amount_deposited' => $saving['amount_deposited'],
-                'status' => 1,
-                'balance' => $saving['amount_deposited'] + $current_balance->balance,
-                'saving_type_id' => $id,
-                'user_id' => Auth::user()->id
-            ]);
-        } else if ($current_balance == null) {
-            $created = Saving::insert([
-                'week_number' => $saving['week_number'],
-                'amount_deposited' => $saving['amount_deposited'],
-                'status' => 1,
-                'balance' => $saving['amount_deposited'] + 0,
-                'saving_type_id' => $id,
-                'user_id' => Auth::user()->id
-            ]);
-        }
+        // $current_balance = DB::table('has_saving_types')
+        //     ->join('saving_types', 'saving_types.id', '=', 'has_saving_types.saving_type_id')
+        //     ->join('users', 'users.id', '=', 'has_saving_types.user_id')
+        //     ->join('savings', 'saving_types.id', '=', 'savings.saving_type_id')
+        //     ->where('users.id', '=', Auth::user()->id)
+        //     ->where('saving_types.id', '=', $id)
+        //     ->select('savings.balance')->orderBy('savings.id', 'DESC')->get()->first();
+        // if ($current_balance != null) {
+        //     $created = Saving::insert([
+        //         'week_number' => $saving['week_number'],
+        //         'amount_deposited' => $saving['amount_deposited'],
+        //         'status' => 1,
+        //         'balance' => $saving['amount_deposited'] + $current_balance->balance,
+        //         'saving_type_id' => $id,
+        //         'user_id' => Auth::user()->id
+        //     ]);
+        // } else if ($current_balance == null) {
+        //     $created = Saving::insert([
+        //         'week_number' => $saving['week_number'],
+        //         'amount_deposited' => $saving['amount_deposited'],
+        //         'status' => 1,
+        //         'balance' => $saving['amount_deposited'] + 0,
+        //         'saving_type_id' => $id,
+        //         'user_id' => Auth::user()->id
+        //     ]);
+        // }
         return redirect()->route('challenges_show', $id);
         //dd($current_balance);
     }
